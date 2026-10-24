@@ -1,0 +1,1492 @@
+@font-face {
+  font-family: Pixel;
+  src: url('/fonts/PressStart2P-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: Bengali;
+  src: url('/fonts/NotoSansBengali.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+:root {
+  font-family: Arial, sans-serif;
+  color: #f6e7c2;
+  background: #153a3c;
+  font-synthesis: none;
+  --gold: #e8bc70;
+  --cream: #f6e7c2;
+  --muted: #a7b5a3;
+  --dark: #183d3d;
+  --outline: #80917a55;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+  border: 0;
+}
+button:disabled {
+  cursor: default;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #ffdf9b;
+  outline-offset: 5px;
+}
+button {
+  transition:
+    background 0.18s,
+    color 0.18s,
+    transform 0.18s;
+}
+button:active {
+  transform: translateY(2px);
+}
+button:hover:not(:disabled) {
+  filter: brightness(1.12);
+}
+button svg {
+  width: 20px;
+  height: 20px;
+}
+svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: square;
+}
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  min-height: 320px;
+  overflow: hidden;
+  background: #163b3b;
+}
+#game {
+  position: absolute;
+  inset: 0;
+}
+#game canvas {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+#ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  isolation: isolate;
+}
+#ui button,
+#ui a,
+#ui [role='dialog'] {
+  pointer-events: auto;
+}
+.menu-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(13, 39, 39, 0.98) 0%,
+      rgba(15, 42, 41, 0.94) 26%,
+      rgba(18, 44, 41, 0.69) 43%,
+      rgba(18, 44, 41, 0.05) 72%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(17, 43, 40, 0.95),
+      transparent 26%,
+      transparent 80%,
+      rgba(17, 43, 40, 0.65)
+    );
+  z-index: -1;
+}
+.masthead {
+  position: absolute;
+  top: 35px;
+  left: 4%;
+  right: 4%;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.brand {
+  color: var(--cream);
+  font-family: Bengali;
+  font-size: 26px;
+  text-decoration: none;
+  line-height: 1.2;
+}
+.brand span {
+  display: block;
+  font-family: Pixel;
+  font-size: 7px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-top: 5px;
+}
+.edition {
+  margin-left: auto;
+  font: 9px monospace;
+  letter-spacing: 2px;
+  color: #e5e2c9;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.live-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px #e8bc7012;
+}
+.icon-button {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  background: #183c3bd9;
+  border: 1px solid var(--outline);
+  font-size: 20px;
+  color: var(--gold);
+}
+.main-menu {
+  position: absolute;
+  top: 24%;
+  left: 8%;
+  width: 390px;
+}
+.eyebrow {
+  font: 10px monospace;
+  letter-spacing: 2.4px;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gold-line {
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+}
+h1 {
+  font-family: Pixel, monospace;
+  font-weight: 400;
+  font-size: clamp(30px, 4.3vw, 64px);
+  line-height: 1.37;
+  letter-spacing: -2px;
+  margin: 26px 0 10px;
+  text-shadow: 3px 4px #122e2b;
+  color: var(--cream);
+}
+h1 > span:not(.title-dot) {
+  color: var(--gold);
+}
+.title-dot {
+  color: #b9674f;
+  margin-left: 4px;
+}
+.bengali-tag {
+  font-family: Bengali;
+  font-size: 23px;
+  font-weight: 400;
+  color: #d8c49c;
+  margin: 10px 0 14px;
+}
+.menu-description {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #b7c0ab;
+  margin-bottom: 27px;
+}
+.primary {
+  background: var(--gold);
+  color: #24433b;
+  padding: 17px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 3px 3px 0 #122e2b;
+  min-height: 48px;
+  border: 1px solid #f0cf91;
+  gap: 25px;
+}
+.journey {
+  width: 300px;
+}
+.journey > span:last-child {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 12px;
+}
+.continue {
+  display: flex;
+  width: 300px;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  padding: 19px 1px;
+  font-size: 12px;
+  border-bottom: 1px solid #d3c79930;
+  color: #d0d3b9;
+}
+.continue:disabled {
+  color: #819484;
+}
+.continue span {
+  font: 10px monospace;
+  color: #98a48e;
+}
+.menu-controls {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 24px;
+  font-size: 10px;
+  color: #94a28e;
+}
+kbd {
+  font: 9px monospace;
+  border: 1px solid #b9c0a555;
+  padding: 4px 5px;
+  color: #d2d3b7;
+  border-radius: 2px;
+  background: #193d3c70;
+  white-space: nowrap;
+}
+.touch-note {
+  display: none;
+}
+.scene-caption {
+  position: absolute;
+  right: 8%;
+  bottom: 17%;
+  text-align: right;
+  text-shadow: 1px 2px #294a42;
+}
+.caption-rule {
+  width: 39px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 0 15px auto;
+}
+.scene-caption > span {
+  font: 9px monospace;
+  letter-spacing: 2px;
+  color: #f0c782;
+}
+.scene-caption h2 {
+  font:
+    italic 25px Georgia,
+    serif;
+  margin: 12px 0 8px;
+  color: #fff0cc;
+}
+.scene-caption p {
+  font-size: 11px;
+  margin: 0;
+  color: #e0dfc6;
+}
+.menu-footer {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 27px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  color: #8fa38f;
+  font: 8px monospace;
+  letter-spacing: 1px;
+}
+.menu-footer .milestone {
+  margin-left: auto;
+}
+.menu-footer button {
+  font: 8px monospace;
+  letter-spacing: 1px;
+  padding: 8px 0;
+  color: #d3d4b9;
+  background: none;
+}
+.menu-footer button span {
+  color: var(--gold);
+  margin-left: 8px;
+}
+/* The HUD is deliberately quiet so the neighbourhood stays the focus. */
+.hud-top {
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  top: 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+.location {
+  display: flex;
+  gap: 12px;
+  padding: 12px 17px 12px 12px;
+  background: #173b3de8;
+  border: 1px solid #a6ba9750;
+  box-shadow: 3px 3px #17373530;
+}
+.location-marker {
+  width: 25px;
+  height: 31px;
+  font-size: 29px;
+  color: var(--gold);
+}
+.location .eyebrow {
+  font-size: 8px;
+  letter-spacing: 1.4px;
+}
+.location h2 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 6px 0 3px;
+}
+.location-bn {
+  font-family: Bengali;
+  font-size: 12px;
+  color: #a6b79b;
+}
+.hud-right {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.wallet {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: #173b3deb;
+  padding: 11px 18px 11px 13px;
+  border: 1px solid #a6ba9750;
+  min-width: 153px;
+}
+.wallet-symbol {
+  color: var(--gold);
+  font: 31px Bengali;
+}
+.wallet small {
+  display: block;
+  font: 7px monospace;
+  letter-spacing: 1.7px;
+  color: #a5b499;
+}
+.wallet strong {
+  display: block;
+  font: 18px Pixel;
+  margin-top: 8px;
+  font-weight: 400;
+}
+.wallet strong span {
+  font: 9px monospace;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+.quest {
+  position: absolute;
+  left: 31px;
+  top: 142px;
+  max-width: 280px;
+  padding: 12px 15px;
+  background: #173b3de0;
+  border-left: 2px solid var(--gold);
+  box-shadow: 2px 2px #17373530;
+}
+.quest-chapter {
+  font: 7px monospace;
+  letter-spacing: 1.3px;
+  color: #c2ba90;
+}
+.quest-main {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  align-items: center;
+}
+.quest-main svg {
+  width: 24px;
+  height: 24px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.quest-main strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+.quest-main p {
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 5px 0 0;
+  color: #b9c2aa;
+  max-width: 185px;
+}
+.world-label {
+  position: absolute;
+  top: 46%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #fff0c8;
+  text-shadow: 2px 2px #244a41;
+  white-space: nowrap;
+  opacity: 0;
+  animation: label-in 4s forwards;
+  pointer-events: none;
+}
+.world-label span {
+  font-family: Bengali;
+  font-size: 16px;
+}
+.world-label small {
+  display: block;
+  font: 7px monospace;
+  letter-spacing: 1.5px;
+  margin-top: 3px;
+}
+.interaction {
+  position: absolute;
+  left: 50%;
+  bottom: 22%;
+  transform: translate(-50%, 10px);
+  background: #193c3bf5;
+  border: 1px solid #d5b97980;
+  box-shadow: 3px 3px #12302e50;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px 9px 12px;
+  display: flex;
+  opacity: 0;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.interaction.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+.interaction kbd {
+  border-color: var(--gold);
+  color: var(--gold);
+  font-size: 11px;
+  padding: 5px 7px;
+}
+.interaction span {
+  font-size: 12px;
+}
+.interaction button {
+  background: #d7b673;
+  color: #274a3d;
+  width: 27px;
+  height: 27px;
+}
+.bottom-help {
+  position: absolute;
+  bottom: 27px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #f1dfbb;
+  background: #173b3dc9;
+  padding: 8px 11px;
+  font-size: 9px;
+}
+.bottom-help i {
+  font-style: normal;
+  color: #96a78e;
+  margin: 0 3px;
+}
+.mini-map {
+  position: absolute;
+  right: 30px;
+  bottom: 26px;
+  width: 134px;
+  height: 91px;
+  border: 1px solid #c3b38170;
+  background: #234d47df;
+  box-shadow: 3px 3px #17373530;
+  overflow: hidden;
+}
+.mini-map > span {
+  position: absolute;
+  right: 7px;
+  top: 5px;
+  font: 8px monospace;
+  color: #d3c495;
+}
+.map-road {
+  position: absolute;
+  top: 42px;
+  width: 100%;
+  height: 15px;
+  background: #9aa17a99;
+  border-top: 2px solid #bfbb9166;
+  border-bottom: 2px solid #bfbb9166;
+}
+.map-buildings {
+  position: absolute;
+  top: 17px;
+  left: 6px;
+  width: 111px;
+  height: 20px;
+  background: repeating-linear-gradient(
+    90deg,
+    #688a6e 0px,
+    #688a6e 16px,
+    transparent 16px,
+    transparent 22px
+  );
+}
+.map-dot {
+  position: absolute;
+  top: 39px;
+  width: 6px;
+  height: 6px;
+  background: #ffe2a0;
+  box-shadow: 0 0 0 3px #ffdf9c30;
+  z-index: 1;
+}
+.mini-map small {
+  position: absolute;
+  bottom: 9px;
+  left: 9px;
+  font: 7px monospace;
+  letter-spacing: 1px;
+  color: #c8c99f;
+}
+.toast {
+  position: absolute;
+  left: 50%;
+  top: 25px;
+  transform: translate(-50%, -15px);
+  color: #f6dfb1;
+  background: #153838f2;
+  border: 1px solid #a1ac8750;
+  border-top: 2px solid var(--gold);
+  padding: 13px 20px;
+  font-size: 11px;
+  line-height: 1.5;
+  opacity: 0;
+  transition: 0.25s;
+  max-width: 90%;
+  width: max-content;
+  z-index: 20;
+  pointer-events: none;
+  text-align: center;
+}
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+/* Dialogue remains HTML text: readable Bengali, selectable buttons, real focus. */
+.dialogue {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  width: min(900px, 90%);
+  padding: 23px;
+  display: flex;
+  gap: 23px;
+  align-items: stretch;
+  background: #193c3df7;
+  border: 1px solid #d6bf845c;
+  box-shadow: 6px 6px #0e2f2ec0;
+  z-index: 5;
+}
+.dialogue:before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 22px;
+  width: 52px;
+  height: 3px;
+  background: var(--gold);
+}
+.speaker-portrait {
+  width: 92px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: #2e5148;
+  border: 1px solid #81917055;
+  overflow: hidden;
+}
+.speaker-portrait canvas {
+  width: 72px;
+  height: 102px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.dialogue-content {
+  flex: 1;
+  min-width: 0;
+}
+.speaker-heading {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.speaker-heading strong {
+  font: 9px monospace;
+  letter-spacing: 1.3px;
+  color: var(--gold);
+}
+.speaker-heading strong span {
+  font-family: Bengali;
+  font-size: 12px;
+  letter-spacing: 0;
+  margin-left: 5px;
+  color: #cbbd94;
+}
+.voice-status {
+  margin-left: auto;
+  font: 7px monospace;
+  letter-spacing: 0.4px;
+  color: #95a78e;
+}
+.speaker-heading button {
+  background: none;
+  color: #bdc5ad;
+  font-size: 22px;
+  padding: 0 2px;
+  line-height: 18px;
+}
+.dialogue-bn {
+  font-family: Bengali;
+  font-size: 23px;
+  line-height: 1.6;
+  margin: 15px 0 4px;
+}
+.translation {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #b7bea9;
+  margin: 0 0 18px;
+}
+.dialogue-choices {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.dialogue-choices button {
+  background: #2a5049;
+  border: 1px solid #a7aa7b55;
+  color: #ecdfb8;
+  padding: 11px 14px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.dialogue-choices button:hover {
+  background: #52725a;
+}
+.dialogue-choices button span {
+  font-family: Bengali;
+  font-size: 13px;
+  color: #f3d398;
+}
+.dialogue-choices b {
+  margin-left: 6px;
+  color: #edc678;
+  font-weight: 400;
+}
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: #102f33c9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  backdrop-filter: blur(3px);
+}
+.modal {
+  width: min(420px, 90%);
+  padding: 34px;
+  background: #1a3e3e;
+  border: 1px solid #cdb77b66;
+  box-shadow: 7px 7px #102e2eaa;
+  max-height: 90%;
+  overflow: auto;
+}
+.modal .eyebrow svg {
+  width: 20px;
+  height: 20px;
+}
+.modal h2 {
+  font:
+    italic 31px Georgia,
+    serif;
+  color: var(--cream);
+  line-height: 1.2;
+  margin: 25px 0 10px;
+}
+.modal > p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #b8c0ab;
+  margin: 0 0 24px;
+}
+.modal button {
+  width: 100%;
+  margin-top: 12px;
+}
+.secondary {
+  background: none;
+  border: 1px solid #a6b18a60;
+  padding: 15px;
+  text-align: left;
+  color: #d4d6b9;
+  font-size: 12px;
+}
+.modal .modal-footnote {
+  font: 9px monospace;
+  color: #8ca38e;
+  margin: 23px 0 0;
+}
+.credits-copy {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #b9c1a9;
+}
+.touch-controls {
+  display: none;
+}
+.boot-error {
+  pointer-events: auto;
+  margin: 20vh auto;
+  max-width: 400px;
+  text-align: center;
+  padding: 30px;
+  color: var(--cream);
+}
+@keyframes label-in {
+  0%,
+  15% {
+    opacity: 0;
+    transform: translate(-50%, 5px);
+  }
+  30%,
+  80% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@media (min-width: 1600px) {
+  .main-menu {
+    top: 23%;
+    left: 9%;
+  }
+  .menu-description {
+    font-size: 16px;
+    margin-top: 22px;
+    margin-bottom: 30px;
+  }
+  .journey,
+  .continue {
+    width: 350px;
+  }
+  .primary {
+    padding: 21px 25px;
+  }
+  .scene-caption h2 {
+    font-size: 30px;
+  }
+}
+@media (max-height: 750px) and (min-width: 801px) {
+  .main-menu {
+    top: 22%;
+  }
+  h1 {
+    font-size: 42px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  .menu-description {
+    font-size: 12px;
+    margin: 9px 0 16px;
+  }
+  .bengali-tag {
+    font-size: 20px;
+    margin: 5px 0 8px;
+  }
+  .continue {
+    padding: 13px 0;
+  }
+  .menu-controls {
+    margin-top: 14px;
+  }
+  .scene-caption {
+    bottom: 18%;
+  }
+  .quest {
+    top: 130px;
+  }
+  .dialogue {
+    padding: 17px;
+    bottom: 18px;
+  }
+  .dialogue-bn {
+    font-size: 21px;
+    margin-top: 12px;
+  }
+}
+@media (pointer: coarse) {
+  .touch-controls {
+    display: flex;
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    bottom: 24px;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+  }
+  .dpad {
+    display: grid;
+    grid-template: repeat(3, 42px) / repeat(3, 42px);
+    gap: 3px;
+    pointer-events: auto;
+    touch-action: none;
+  }
+  .dpad button {
+    border: 1px solid #c2bb8c70;
+    background: #1c4541c9;
+    color: #e9cf97;
+    font-size: 15px;
+    touch-action: none;
+    user-select: none;
+  }
+  .dpad button.pressed {
+    background: #7c9564;
+  }
+  .dpad [data-dir='up'] {
+    grid-area: 1/2;
+  }
+  .dpad [data-dir='left'] {
+    grid-area: 2/1;
+  }
+  .dpad [data-dir='down'] {
+    grid-area: 2/2;
+  }
+  .dpad [data-dir='right'] {
+    grid-area: 2/3;
+  }
+  .touch-interact {
+    pointer-events: auto;
+    width: 69px;
+    height: 69px;
+    background: #d8b879ed;
+    color: #294d40;
+    border: 2px solid #f4d6a0;
+    font: 22px Pixel;
+    touch-action: manipulation;
+    box-shadow: 3px 3px #193f3b;
+  }
+  .touch-interact span {
+    display: block;
+    font: 7px monospace;
+    letter-spacing: 1px;
+    margin-top: 9px;
+  }
+  .bottom-help,
+  .mini-map {
+    display: none;
+  }
+  .menu-controls kbd,
+  .menu-controls > span:not(.touch-note) {
+    display: none;
+  }
+  .menu-controls .touch-note {
+    display: block;
+  }
+  .interaction {
+    bottom: 25%;
+  }
+}
+@media (max-width: 800px) {
+  .masthead {
+    top: 22px;
+    left: 5%;
+    right: 5%;
+    gap: 12px;
+  }
+  .edition {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+  .brand {
+    font-size: 22px;
+  }
+  .brand span {
+    font-size: 5px;
+  }
+  .main-menu {
+    left: 7%;
+    top: 24%;
+    width: 330px;
+  }
+  h1 {
+    font-size: 38px;
+    margin-top: 23px;
+  }
+  .menu-description {
+    font-size: 12px;
+  }
+  .journey,
+  .continue {
+    width: 270px;
+  }
+  .scene-caption {
+    right: 5%;
+    bottom: 18%;
+  }
+  .scene-caption h2 {
+    font-size: 20px;
+  }
+  .scene-caption > span {
+    font-size: 7px;
+  }
+  .scene-caption p {
+    font-size: 9px;
+  }
+  .menu-footer {
+    font-size: 6px;
+    letter-spacing: 0.6px;
+    bottom: 18px;
+    gap: 14px;
+  }
+  .menu-footer .milestone {
+    display: none;
+  }
+  .menu-footer button {
+    margin-left: auto;
+    font-size: 7px;
+  }
+  .hud-top {
+    left: 15px;
+    right: 15px;
+    top: 15px;
+  }
+  .location {
+    padding: 8px 12px 8px 8px;
+    gap: 8px;
+  }
+  .location-marker {
+    font-size: 25px;
+    width: 20px;
+  }
+  .location .eyebrow {
+    font-size: 6px;
+  }
+  .location h2 {
+    font-size: 12px;
+  }
+  .location-bn {
+    font-size: 10px;
+  }
+  .hud-right {
+    gap: 5px;
+  }
+  .wallet {
+    min-width: 100px;
+    padding: 8px 9px;
+    gap: 6px;
+  }
+  .wallet strong {
+    font-size: 12px;
+  }
+  .wallet small {
+    font-size: 5px;
+    letter-spacing: 1px;
+  }
+  .wallet-symbol {
+    font-size: 23px;
+  }
+  .icon-button {
+    width: 31px;
+    height: 31px;
+    font-size: 17px;
+  }
+  .quest {
+    left: 16px;
+    top: 111px;
+    padding: 10px;
+    max-width: 240px;
+  }
+  .quest-chapter {
+    font-size: 6px;
+  }
+  .quest-main {
+    margin-top: 8px;
+    gap: 8px;
+  }
+  .quest-main strong {
+    font-size: 10px;
+  }
+  .quest-main p {
+    font-size: 9px;
+  }
+  .quest-main svg {
+    width: 19px;
+  }
+  .dialogue {
+    width: 94%;
+    padding: 15px;
+    gap: 12px;
+  }
+  .speaker-portrait {
+    width: 65px;
+  }
+  .speaker-portrait canvas {
+    width: 60px;
+    height: 85px;
+  }
+  .speaker-heading {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .speaker-heading strong {
+    font-size: 8px;
+  }
+  .voice-status {
+    font-size: 6px;
+    order: 3;
+    width: 100%;
+  }
+  .speaker-heading button {
+    margin-left: auto;
+  }
+  .dialogue-bn {
+    font-size: 19px;
+    margin-top: 11px;
+  }
+  .translation {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+  .dialogue-choices button {
+    padding: 10px;
+    font-size: 10px;
+  }
+  .dialogue-choices button span {
+    font-size: 12px;
+  }
+  .toast {
+    top: 95px;
+    font-size: 10px;
+  }
+  .world-label {
+    display: none !important;
+  }
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  #game {
+    top: 18%;
+    bottom: 18%;
+  }
+  .menu-shade {
+    background:
+      linear-gradient(0deg, #102e2ff5 0%, #102e2ff0 25%, #102e2f88 57%, transparent 85%),
+      linear-gradient(180deg, #102e2f88, transparent 28%);
+  }
+  .edition {
+    max-width: 155px;
+    line-height: 1.6;
+    text-align: right;
+    letter-spacing: 0.8px;
+  }
+  .masthead {
+    top: 22px;
+  }
+  .main-menu {
+    top: auto;
+    bottom: 12%;
+    left: 8%;
+    right: 8%;
+    width: auto;
+  }
+  .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.8px;
+  }
+  h1 {
+    font-size: 34px;
+    line-height: 1.35;
+    margin: 14px 0 8px;
+  }
+  .bengali-tag {
+    font-size: 20px;
+    margin: 6px 0 8px;
+  }
+  .menu-description {
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0 0 19px;
+  }
+  .journey,
+  .continue {
+    width: 100%;
+  }
+  .continue {
+    padding: 14px 0;
+  }
+  .menu-controls {
+    margin-top: 12px;
+  }
+  .scene-caption {
+    display: none;
+  }
+  .menu-footer {
+    bottom: 22px;
+    left: 8%;
+    right: 8%;
+    font-size: 6px;
+    max-width: 100%;
+    gap: 10px;
+  }
+  .menu-footer > span:first-child {
+    max-width: 150px;
+    line-height: 1.8;
+  }
+  .menu-footer button {
+    font-size: 6px;
+  }
+  .main-menu .primary {
+    min-height: 47px;
+    padding: 14px 18px;
+  }
+  .location {
+    max-width: 200px;
+  }
+  .location .eyebrow {
+    letter-spacing: 0.5px;
+  }
+  .location h2 {
+    font-size: 11px;
+  }
+  .location-marker {
+    display: none;
+  }
+  .location-bn {
+    font-size: 9px;
+  }
+  .hud-right {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    width: 113px;
+  }
+  .wallet {
+    width: 113px;
+    min-width: 0;
+  }
+  .hud-top {
+    top: 18px;
+  }
+  .quest {
+    top: 111px;
+    max-width: 210px;
+  }
+  .touch-controls {
+    left: 20px;
+    right: 23px;
+    bottom: 35px;
+  }
+  .dpad {
+    grid-template: repeat(3, 45px) / repeat(3, 45px);
+  }
+  .touch-interact {
+    width: 72px;
+    height: 72px;
+  }
+  .interaction {
+    bottom: 29%;
+    padding: 7px 9px;
+    gap: 9px;
+    max-width: 94%;
+  }
+  .interaction span {
+    font-size: 10px;
+  }
+  .interaction kbd {
+    font-size: 9px;
+  }
+  .toast {
+    top: 193px;
+    width: 87%;
+    padding: 10px 13px;
+  }
+  .dialogue {
+    bottom: 20px;
+    max-height: 72%;
+    overflow: auto;
+    gap: 10px;
+    padding: 16px 13px;
+  }
+  .speaker-portrait {
+    width: 42px;
+    max-height: 98px;
+    align-self: flex-start;
+    margin-top: 35px;
+  }
+  .speaker-portrait canvas {
+    width: 48px;
+    height: 68px;
+  }
+  .dialogue-bn {
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  .dialogue-choices {
+    flex-direction: column;
+  }
+  .dialogue-choices button {
+    justify-content: space-between;
+    padding: 12px;
+    font-size: 11px;
+  }
+  .translation {
+    line-height: 1.7;
+  }
+  .speaker-heading strong span {
+    display: none;
+  }
+  .speaker-heading strong {
+    font-size: 9px;
+  }
+  .voice-status {
+    font-size: 5px;
+    letter-spacing: 0.2px;
+  }
+  .modal {
+    padding: 26px;
+  }
+  .modal h2 {
+    font-size: 28px;
+  }
+  .bottom-help {
+    display: none;
+  }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  .masthead {
+    top: 15px;
+  }
+  .brand {
+    font-size: 18px;
+  }
+  .brand span {
+    font-size: 5px;
+  }
+  .edition {
+    font-size: 7px;
+  }
+  .main-menu {
+    top: 22%;
+    left: 7%;
+  }
+  h1 {
+    font-size: 26px;
+    margin: 11px 0 5px;
+    line-height: 1.4;
+  }
+  .bengali-tag {
+    font-size: 17px;
+    margin: 2px 0 5px;
+  }
+  .menu-description {
+    font-size: 10px;
+    line-height: 1.5;
+    margin: 4px 0 12px;
+  }
+  .eyebrow {
+    font-size: 7px;
+  }
+  .journey,
+  .continue {
+    width: 240px;
+  }
+  .primary {
+    padding: 11px 15px;
+    min-height: 38px;
+    font-size: 11px;
+  }
+  .continue {
+    padding: 10px 1px;
+    font-size: 10px;
+  }
+  .menu-controls {
+    margin-top: 10px;
+    font-size: 8px;
+  }
+  .scene-caption {
+    bottom: 21%;
+  }
+  .scene-caption h2 {
+    font-size: 19px;
+  }
+  .menu-footer {
+    bottom: 14px;
+  }
+  .quest {
+    top: 90px;
+    padding: 8px 10px;
+  }
+  .quest-chapter {
+    font-size: 5px;
+  }
+  .quest-main {
+    margin-top: 5px;
+  }
+  .quest-main p {
+    font-size: 8px;
+    margin-top: 3px;
+  }
+  .location-bn {
+    display: none;
+  }
+  .location h2 {
+    margin-bottom: 0;
+  }
+  .hud-top {
+    top: 14px;
+  }
+  .touch-controls {
+    bottom: 13px;
+  }
+  .dpad {
+    grid-template: repeat(3, 31px) / repeat(3, 31px);
+    gap: 2px;
+  }
+  .touch-interact {
+    width: 55px;
+    height: 55px;
+    font-size: 16px;
+  }
+  .touch-interact span {
+    font-size: 5px;
+  }
+  .interaction {
+    bottom: 18%;
+    padding: 5px 7px;
+  }
+  .interaction span {
+    font-size: 10px;
+  }
+  .toast {
+    top: 14px;
+    max-width: 45%;
+    font-size: 9px;
+    padding: 8px 12px;
+  }
+  .dialogue {
+    padding: 11px 14px;
+    bottom: 12px;
+    width: min(640px, 88%);
+    gap: 12px;
+  }
+  .speaker-portrait {
+    width: 50px;
+  }
+  .speaker-portrait canvas {
+    width: 48px;
+    height: 68px;
+  }
+  .dialogue-bn {
+    font-size: 17px;
+    line-height: 1.5;
+    margin: 8px 0 3px;
+  }
+  .translation {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+  .dialogue-choices button {
+    padding: 8px 10px;
+    font-size: 9px;
+  }
+  .voice-status {
+    font-size: 5px;
+  }
+  .modal {
+    padding: 20px;
+    max-width: 380px;
+  }
+  .modal h2 {
+    font-size: 25px;
+    margin: 12px 0 8px;
+  }
+  .modal > p {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+  .modal button {
+    margin-top: 8px;
+    padding: 11px;
+  }
+  .modal .modal-footnote {
+    margin-top: 15px;
+  }
+  .credits-copy {
+    font-size: 10px;
+  }
+  .bottom-help {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  #game {
+    top: 13%;
+    bottom: 22%;
+  }
+}
+.dpad svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  stroke: none;
+}
+.dpad [data-dir='left'] svg {
+  transform: rotate(-90deg);
+}
+.dpad [data-dir='down'] svg {
+  transform: rotate(180deg);
+}
+.dpad [data-dir='right'] svg {
+  transform: rotate(90deg);
+}
