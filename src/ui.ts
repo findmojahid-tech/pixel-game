@@ -1,3 +1,4 @@
+import { BUILDINGS, DIRECTION_SIGNS, SIZE, ZONES, type Place, type ZoneId } from './district';
 import type { SaveData } from './state';
 export interface UIActions {
   start(load: boolean): void;
@@ -10,68 +11,60 @@ export interface UIActions {
   order(tea: 'milk' | 'lemon'): void;
   story(): void;
   closeDialogue(): void;
+  map(): void;
+  bookmark(): void;
 }
-const cup =
-  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h13v9H4zM17 10h4v5h-4M3 21h16M7 2v4M12 1v5"/></svg>';
-const sun =
-  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8h6v8H9zM11 1v4M11 19v4M1 11h4M19 11h4M4 4l3 3M17 17l3 3M4 20l3-3M17 7l3-3"/></svg>';
+const icons = {
+  pause: '<path d="M8 5v14M16 5v14"/>',
+  map: '<path d="M3 5l6-2 6 3 6-2v16l-6 2-6-3-6 2ZM9 3v16M15 6v16"/>',
+  sound: '<path d="M3 10h4l5-5v14l-5-5H3ZM16 8q6 4 0 8M19 5q9 7 0 14"/>',
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  close: '<path d="M6 6l12 12M18 6L6 18"/>',
+};
+const svg = (key: keyof typeof icons) =>
+  `<svg viewBox="0 0 24 24" aria-hidden="true">${icons[key]}</svg>`;
 export class UI {
   root = document.querySelector<HTMLDivElement>('#ui')!;
   held = new Set<string>();
   isDialogue = false;
   private toastTimer?: number;
+  private zoneTimer?: number;
+  private lastZone = '';
   private promptValue = '';
   constructor(private actions: UIActions) {}
+  private shell() {
+    return '<div id="world-signs"></div><div id="dialogue-root"></div><div id="modal-root"></div><div class="toast" role="status"></div>';
+  }
   menu(hasSave: boolean) {
+    this.root.classList.add('menu-mode');
     this.held.clear();
     this.isDialogue = false;
-    this.root.innerHTML = `
-      <div class="menu-shade"></div>
-      <header class="masthead"><a class="brand" href="#" aria-label="Pothe Pothe home">পথে পথে<span>POTHE POTHE</span></a><div class="edition"><span class="live-dot"></span> AN INDEPENDENT BANGLADESH ADVENTURE</div><button class="icon-button sound-button" data-action="mute" aria-label="Toggle audio">♫</button></header>
-      <main class="main-menu">
-        <div class="eyebrow"><span class="gold-line"></span> A LITTLE WAY HOME</div>
-        <h1>POTHE<br><span>POTHE</span><span class="title-dot">.</span></h1>
-        <p class="bengali-tag" lang="bn">চেনা পথ, নতুন গল্প।</p>
-        <p class="menu-description">The warmth of a familiar street.<br>A cup of tea. A thousand little stories.</p>
-        <button class="primary journey" data-action="new"><span>Begin your journey</span><span>→</span></button>
-        <button class="continue" data-action="continue" ${hasSave ? '' : 'disabled'}>${hasSave ? 'Continue your journey' : 'Your story starts here'} <span>${hasSave ? '↗' : '01'}</span></button>
-        <div class="menu-controls"><kbd>W A S D</kbd><span>move</span><kbd>E</kbd><span>interact</span><span class="touch-note">Touch controls on mobile</span></div>
-      </main>
-      <div class="scene-caption"><div class="caption-rule"></div><span>01 / DHAKA, BANGLADESH</span><h2>A street that feels like home.</h2><p>Late afternoon in the neighbourhood</p></div>
-      <footer class="menu-footer"><span>CRAFTED WITH LOVE, ROOTED IN BANGLADESH</span><span class="milestone">FIRST PLAYABLE · v0.1</span><button data-action="credits">ABOUT & CREDITS <span>↗</span></button></footer>
-      <div class="toast" role="status"></div><div id="modal-root"></div>`;
+    this.root.innerHTML = `${this.shell()}<div class="menu-vignette"></div><main class="title-menu"><p class="title-bn" lang="bn">পথে পথে</p><p class="edition">A BANGLADESH ADVENTURE</p><h1>POTHE<br><span>POTHE</span></h1><p class="title-caption">A whole neighbourhood. A thousand little stories.</p><div class="title-actions"><button class="primary" data-action="new">Begin your journey ${svg('arrow')}</button><button class="secondary" data-action="continue" ${hasSave ? '' : 'disabled'}>Continue your journey</button><button class="text-button" data-action="credits">About this district</button></div></main><span class="menu-edition">DHAKA / DISTRICT 01<br>THE NEIGHBOURHOOD EDITION · v0.2</span><button class="icon-button menu-sound" data-action="mute" aria-label="Toggle audio">${svg('sound')}</button>`;
     this.bind('new', () => {
-      if (hasSave) this.confirmNew();
-      else this.actions.start(false);
+      if (hasSave) {
+        this.modal(
+          'A new journey?',
+          'This replaces your local progress. Your saved journey is safe if you go back.',
+          `<button class="primary" data-action="confirm">Start a new journey</button><button class="secondary" data-action="cancel">Go back</button>`,
+        );
+        this.bind('confirm', () => this.actions.start(false));
+        this.bind('cancel', () => this.closeModal());
+      } else this.actions.start(false);
     });
     this.bind('continue', () => this.actions.start(true));
     this.bind('mute', () => this.actions.mute());
     this.bind('credits', () => this.credits());
-    this.root.querySelector('.brand')?.addEventListener('click', (e) => e.preventDefault());
-  }
-  private confirmNew() {
-    this.modal(
-      'A fresh beginning',
-      'Starting a new journey replaces your local save. Your current story can still be continued if you go back.',
-      `<button class="primary" data-action="confirm-new">Start a new journey</button><button class="secondary" data-action="cancel-new">Go back</button>`,
-    );
-    this.bind('confirm-new', () => this.actions.start(false));
-    this.bind('cancel-new', () => this.closeModal());
+    this.signs();
   }
   hud(state: SaveData) {
+    this.root.classList.remove('menu-mode');
     this.held.clear();
     this.isDialogue = false;
+    this.lastZone = '';
     this.promptValue = '';
-    this.root.innerHTML = `
-      <header class="hud-top"><div class="location"><div class="location-marker">◇</div><div><span class="eyebrow">DHAKA · LATE AFTERNOON</span><h2 id="place-name">${state.place === 'street' ? 'The neighbourhood' : 'Rahim Mama’s tea stall'}</h2><span class="location-bn" lang="bn">${state.place === 'street' ? 'আমাদের পাড়া' : 'রহিম মামার চায়ের দোকান'}</span></div></div><div class="hud-right"><div class="wallet"><span class="wallet-symbol">৳</span><div><small>POCKET MONEY</small><strong id="wallet">${state.wallet} <span>BDT</span></strong></div></div><button class="icon-button" data-action="mute" aria-label="Toggle audio">♫</button><button class="icon-button" data-action="pause" aria-label="Pause game"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke-width="3"/></svg></button></div></header>
-      <aside class="quest"><span class="quest-chapter">A LITTLE WAY HOME / 01</span><div class="quest-main">${cup}<div><strong id="quest-title">${state.cups ? 'A little taste of home' : 'First, a cup of tea'}</strong><p id="quest-copy">${state.cups ? 'Tea shared. A new story begun.' : 'Visit Rahim Mama’s tea stall.'}</p></div></div></aside>
-      <div class="world-label"><span>রহিম মামার চা</span><small>RAHIM MAMA’S TEA STALL</small></div>
-      <div class="interaction" id="interaction"><kbd>E</kbd><span>Enter tea stall</span><button data-action="interact" aria-label="Interact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L19 5M7 5h12v12"/></svg></button></div>
-      <div class="bottom-help"><kbd>W A S D</kbd> Move <i>·</i> <kbd>E</kbd> Interact <i>·</i> <kbd>SHIFT</kbd> Run <i>·</i> <kbd>ESC</kbd> Pause</div>
-      <div class="mini-map" aria-hidden="true"><span>N</span><div class="map-buildings"></div><div class="map-road"></div><div class="map-dot"></div><small>OLD DHAKA</small></div>
-      <div class="touch-controls"><div class="dpad"><button data-dir="up" aria-label="Move up"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5L20 18H4Z"/></svg></button><button data-dir="left" aria-label="Move left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5L20 18H4Z"/></svg></button><button data-dir="down" aria-label="Move down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5L20 18H4Z"/></svg></button><button data-dir="right" aria-label="Move right"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5L20 18H4Z"/></svg></button></div><button class="touch-interact" data-action="touch-interact" aria-label="Interact">E<span>INTERACT</span></button></div>
-      <div id="dialogue-root"></div><div id="modal-root"></div><div class="toast" role="status"></div>`;
+    this.root.innerHTML = `${this.shell()}<header class="hud"><div class="location"><span class="district-dot"></span><div><strong id="place-name">Cha-er Adda</strong><span id="place-bn" lang="bn">চায়ের আড্ডা</span></div></div><div class="hud-tools"><span class="wallet"><span lang="bn">৳</span><strong id="wallet">${state.wallet}</strong></span><button class="map-button" data-action="map" aria-label="Open district map">${svg('map')}<span id="visit-count">${state.visited.length}/6</span></button><button class="icon-button" data-action="mute" aria-label="Toggle audio">${svg('sound')}</button><button class="icon-button" data-action="pause" aria-label="Pause game">${svg('pause')}</button></div></header><div class="zone-arrival"><small>DISCOVERED</small><strong></strong><span lang="bn"></span></div><div id="interaction" class="interaction"><button data-action="interact" aria-label="Interact"><kbd>E</kbd><span></span></button></div><div class="keyboard-hint">WASD / ARROWS <b>MOVE</b><i>·</i> SHIFT <b>RUN</b><i>·</i> M <b>MAP</b></div><div class="touch-controls"><div class="dpad">${['up', 'left', 'down', 'right'].map((d) => `<button data-dir="${d}" aria-label="Move ${d}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5L20 18H4Z"/></svg></button>`).join('')}</div><button class="touch-interact" data-action="touch-interact" aria-label="Interact">E</button></div>`;
     this.bind('pause', () => this.actions.pause());
+    this.bind('map', () => this.actions.map());
     this.bind('mute', () => this.actions.mute());
     this.bind('interact', () => this.actions.interact());
     this.bind('touch-interact', () => this.actions.interact());
@@ -83,95 +76,188 @@ export class UI {
         this.held.add(key);
         button.classList.add('pressed');
       });
-      for (const event of ['pointerup', 'pointercancel', 'lostpointercapture'])
-        button.addEventListener(event, () => {
+      for (const e of ['pointerup', 'pointercancel', 'lostpointercapture'])
+        button.addEventListener(e, () => {
           this.held.delete(key);
           button.classList.remove('pressed');
         });
     });
+    this.signs();
   }
-  update(state: SaveData) {
+  private signs() {
+    const root = this.root.querySelector('#world-signs');
+    if (root)
+      root.innerHTML =
+        BUILDINGS.filter((b) => b.style !== 'house')
+          .map(
+            (b) =>
+              `<div class="world-sign" data-sign="${b.id}"><strong lang="bn">${b.bn}</strong><span>${b.name}</span></div>`,
+          )
+          .join('') +
+        DIRECTION_SIGNS.map(
+          (s) =>
+            `<div class="world-sign" data-direction="${s.id}"><strong lang="bn">${s.bn}</strong><span>${s.name}</span></div>`,
+        ).join('');
+  }
+  frame(place: Place, camX: number, camY: number, scale: number, ox: number, oy: number) {
+    this.root.querySelectorAll<HTMLElement>('[data-sign]').forEach((el) => {
+      const b = BUILDINGS.find((b) => b.id === el.dataset.sign)!;
+      const x = Math.round((b.x + 19 - camX) * scale + ox),
+        y = Math.round((b.y + Math.min(82, Math.max(28, b.h - 120)) + 17 - camY) * scale + oy);
+      el.hidden =
+        place !== 'district' || x < -b.w * scale || y < -80 || x > innerWidth || y > innerHeight;
+      if (!el.hidden) {
+        el.style.left = `${x}px`;
+        el.style.top = `${y}px`;
+        el.style.width = `${(b.w - 38) * scale}px`;
+        el.style.setProperty('--sign-size', `${scale === 1 ? 15 : 24}px`);
+        el.style.setProperty('--sign-small', `${scale === 1 ? 6 : 8}px`);
+      }
+    });
+    this.root.querySelectorAll<HTMLElement>('[data-direction]').forEach((el) => {
+      const s = DIRECTION_SIGNS.find((s) => s.id === el.dataset.direction)!;
+      el.hidden = place !== 'district';
+      el.style.left = `${Math.round((s.x - camX) * scale + ox)}px`;
+      el.style.top = `${Math.round((s.y + 6 - camY) * scale + oy)}px`;
+      el.style.width = `${s.w * scale}px`;
+      el.style.setProperty('--sign-size', `${scale === 1 ? 15 : 24}px`);
+      el.style.setProperty('--sign-small', `${scale === 1 ? 6 : 8}px`);
+    });
+  }
+  update(state: SaveData, zone: ZoneId) {
     const wallet = this.root.querySelector('#wallet');
-    if (wallet && wallet.textContent !== `${state.wallet} BDT`)
-      wallet.innerHTML = `${state.wallet} <span>BDT</span>`;
-    const title = this.root.querySelector('#quest-title'),
-      copy = this.root.querySelector('#quest-copy');
-    if (title) title.textContent = state.cups ? 'A little taste of home' : 'First, a cup of tea';
-    if (copy)
-      copy.textContent = state.cups
-        ? `${state.cups} cup${state.cups === 1 ? '' : 's'} enjoyed · Take a walk, stay a while.`
-        : 'Visit Rahim Mama’s tea stall.';
-    const dot = this.root.querySelector<HTMLElement>('.map-dot');
-    if (dot) dot.style.left = `${Math.max(5, Math.min(90, (state.x / 1800) * 90))}%`;
+    if (wallet && wallet.textContent !== String(state.wallet))
+      wallet.textContent = String(state.wallet);
+    const count = this.root.querySelector('#visit-count');
+    if (count) count.textContent = `${state.visited.length}/6`;
+    if (zone === this.lastZone) return;
+    this.lastZone = zone;
+    const z = ZONES.find((z) => z.id === zone)!;
+    const name = this.root.querySelector('#place-name'),
+      bn = this.root.querySelector('#place-bn');
+    if (name) name.textContent = z.name;
+    if (bn) bn.textContent = z.bn;
   }
-  prompt(text: string) {
-    if (this.promptValue === text) return;
-    this.promptValue = text;
+  arrival(id: ZoneId) {
+    const z = ZONES.find((z) => z.id === id)!;
+    const el = this.root.querySelector('.zone-arrival');
+    if (!el) return;
+    el.querySelector('strong')!.textContent = z.name;
+    el.querySelector('span')!.textContent = z.bn;
+    el.classList.add('show');
+    clearTimeout(this.zoneTimer);
+    this.zoneTimer = window.setTimeout(() => el.classList.remove('show'), 3000);
+  }
+  prompt(text: string, x?: number, y?: number) {
     const el = this.root.querySelector<HTMLElement>('#interaction');
-    if (el) {
+    if (!el) return;
+    if (this.promptValue !== text) {
+      this.promptValue = text;
       el.classList.toggle('visible', !!text);
       el.querySelector('span')!.textContent = text;
     }
+    if (x !== undefined) {
+      el.style.left = `${Math.round(x)}px`;
+      el.style.top = `${Math.round(y!)}px`;
+    }
   }
-  dialogue(bn: string, en: string, result = false) {
+  dialogue(
+    name: string,
+    bn: string,
+    line: string,
+    english: string,
+    kind: 'tea' | 'result' | 'npc' | 'book' = 'npc',
+  ) {
     this.isDialogue = true;
     this.held.clear();
-    const el = this.root.querySelector('#dialogue-root');
-    if (!el) return;
-    el.innerHTML = `<section class="dialogue" role="dialog" aria-modal="true" aria-label="Conversation with Rahim Mama"><div class="speaker-portrait"><canvas id="portrait" width="24" height="34"></canvas></div><div class="dialogue-content"><div class="speaker-heading"><strong>RAHIM MAMA <span lang="bn">রহিম মামা</span></strong><span class="voice-status">BENGALI SUBTITLES · VOICE NOT RECORDED</span><button data-action="close-dialogue" aria-label="Close conversation">×</button></div><p class="dialogue-bn" lang="bn">${bn}</p><p class="translation">${en}</p><div class="dialogue-choices">${result ? '<button data-action="another">Another cup?</button><button data-action="close-dialogue">Thank you, Mama →</button>' : '<button data-action="milk"><span lang="bn">দুধ চা</span> Milk tea <b>৳15</b></button><button data-action="lemon"><span lang="bn">লেবু চা</span> Lemon tea <b>৳10</b></button><button data-action="story">Tell me your story</button>'}</div></div></section>`;
+    this.prompt('');
+    const root = this.root.querySelector('#dialogue-root');
+    if (!root) return;
+    const choices =
+      kind === 'tea'
+        ? '<button data-action="milk"><span lang="bn">দুধ চা</span> Milk tea <b>৳15</b></button><button data-action="lemon"><span lang="bn">লেবু চা</span> Lemon tea <b>৳10</b></button><button data-action="story">Your story?</button>'
+        : kind === 'result'
+          ? '<button data-action="another">Another cup?</button><button data-action="close-dialogue">Thank you, Mama</button>'
+          : kind === 'book'
+            ? '<button data-action="bookmark">Keep the bookmark</button><button data-action="close-dialogue">See you soon</button>'
+            : '<button data-action="close-dialogue">See you around</button>';
+    root.innerHTML = `<section class="dialogue" role="dialog" aria-modal="true" aria-label="Conversation with ${name}"><canvas class="portrait" width="36" height="54"></canvas><div class="dialogue-body"><header><strong>${name} <span lang="bn">${bn}</span></strong><button data-action="close-dialogue" aria-label="Close conversation">${svg('close')}</button></header><p class="dialogue-bn" lang="bn">${line}</p><p class="translation">${english}</p><div class="dialogue-choices">${choices}</div></div></section>`;
     this.bind('milk', () => this.actions.order('milk'));
     this.bind('lemon', () => this.actions.order('lemon'));
     this.bind('story', () => this.actions.story());
     this.bind('close-dialogue', () => this.actions.closeDialogue());
     this.bind('another', () => this.actions.interact());
-    this.root
+    this.bind('bookmark', () => this.actions.bookmark());
+    root
       .querySelector<HTMLButtonElement>('.dialogue-choices button')
       ?.focus({ preventScroll: true });
   }
-  voiceStatus(recorded: boolean) {
-    const status = this.root.querySelector('.voice-status');
-    if (status)
-      status.textContent = recorded
-        ? 'BENGALI VOICE · LICENSED RECORDING'
-        : 'BENGALI SUBTITLES · VOICE NOT RECORDED';
-  }
-  closeDialogue() {
-    this.isDialogue = false;
-    const el = this.root.querySelector('#dialogue-root');
-    if (el) el.innerHTML = '';
-    this.held.clear();
-  }
   portrait(canvas: HTMLCanvasElement) {
-    const target = this.root.querySelector<HTMLCanvasElement>('#portrait');
-    if (target) {
-      const ctx = target.getContext('2d')!;
+    const c = this.root.querySelector<HTMLCanvasElement>('.portrait');
+    if (c) {
+      const ctx = c.getContext('2d')!;
       ctx.imageSmoothingEnabled = false;
       ctx.drawImage(canvas, 0, 0);
     }
   }
+  closeDialogue() {
+    this.isDialogue = false;
+    this.held.clear();
+    const el = this.root.querySelector('#dialogue-root');
+    if (el) el.innerHTML = '';
+  }
+  voiceStatus(recorded: boolean) {
+    const el = this.root.querySelector('.dialogue');
+    if (el) el.setAttribute('data-voice', recorded ? 'recorded' : 'subtitles');
+  }
   pause() {
     this.held.clear();
     this.modal(
-      'Take a little breather.',
-      'Your neighbourhood will be right here.',
-      `<button class="primary" data-action="resume">Back to the street →</button><button class="secondary" data-action="save">Save journey</button><button class="secondary" data-action="menu">Save & main menu</button><p class="modal-footnote">Saved on this device · No account needed</p>`,
+      'Stay a little longer.',
+      'A neighbourhood to wander, a story to keep.',
+      `<button class="primary" data-action="resume">Back to the neighbourhood</button><button class="secondary" data-action="save">Save journey</button><button class="secondary" data-action="menu">Save & main menu</button><p class="footnote">Autosaves on this device · Esc to resume</p>`,
     );
     this.bind('resume', () => this.actions.resume());
     this.bind('save', () => this.actions.save());
     this.bind('menu', () => this.actions.menu());
   }
+  map(state: SaveData) {
+    this.held.clear();
+    const mx = state.place === 'district' ? state.x : state.place === 'stall' ? 480 : 1274,
+      my = state.place === 'district' ? state.y : state.place === 'stall' ? 342 : 338;
+    this.modal(
+      'Your neighbourhood',
+      `${state.visited.length} of 6 places discovered · ${state.cups ? 'Tea enjoyed' : 'Find a cup of tea'}${state.bookmark ? ' · Bookmark collected' : ''}`,
+      `<div class="district-map"><svg viewBox="0 0 ${SIZE.w} ${SIZE.h}" role="img" aria-label="Connected district map"><rect width="1920" height="1400" fill="#5e995f"/><path d="M0 440H1920M480 0V1400M1420 0V1400M0 960H1920M980 0V1400" stroke="#efd097" stroke-width="115"/>${BUILDINGS.map((b) => `<rect x="${b.x}" y="${b.y}" width="${b.w}" height="${b.h}" fill="${b.roof}" stroke="#233353" stroke-width="12"/>`).join('')}${ZONES.map(
+        (z, i) => {
+          const xy = [
+            [480, 495],
+            [1460, 435],
+            [480, 960],
+            [1440, 1230],
+            [480, 265],
+            [1274, 255],
+          ][i];
+          return `<circle cx="${xy[0]}" cy="${xy[1]}" r="48" fill="${state.visited.includes(z.id) ? '#ffd17c' : '#304763'}" stroke="#233353" stroke-width="8"/><text x="${xy[0]}" y="${xy[1] + 17}" fill="${state.visited.includes(z.id) ? '#233353' : '#fff1bc'}" text-anchor="middle" font-family="monospace" font-size="55" font-weight="bold">${i + 1}</text>`;
+        },
+      ).join(
+        '',
+      )}<circle cx="${mx}" cy="${my}" r="32" fill="#fff6bd" stroke="#d45167" stroke-width="17"/></svg><span class="map-north">N ↑</span></div><div class="map-legend">${ZONES.map((z, i) => `<span class="${state.visited.includes(z.id) ? 'found' : ''}">${state.visited.includes(z.id) ? '•' : '○'} ${i + 1}. ${z.name}</span>`).join('')}</div><button class="primary" data-action="close-map">Keep wandering ${svg('arrow')}</button>`,
+    );
+    this.bind('close-map', () => this.actions.resume());
+  }
   credits() {
     this.modal(
-      'Made for the little moments.',
-      'POTHE POTHE is an original pixel-art love letter to Bangladesh. This first neighbourhood is a fictional interpretation of Old Dhaka.',
-      `<div class="credits-copy"><p>Original pixel artwork and synthesized sound effects created for this project. Fonts: Press Start 2P and Noto Sans Bengali, SIL Open Font License.</p><p>Bengali dialogue includes English translations. Authentic voice recordings are not included yet. No paid services or reference images were used.</p><p>Tea purchases use fictional in-game BDT. No real money is processed.</p></div><button class="primary" data-action="close-credits">Back to the neighbourhood →</button>`,
+      'Pothe Pothe · পথে পথে',
+      'A colourful, fictional Old Dhaka neighbourhood. Four outdoor areas, two interiors, and many ways to get there.',
+      `<p class="credits">Original integer-grid pixel artwork and synthesized effects. Local fonts: Press Start 2P and Noto Sans Bengali (SIL OFL). Bengali dialogue has English translations. Human voice recordings are still missing; licensed-recording support is included. No reference images were available for this revision. No paid services used.</p><button class="primary" data-action="close-credits">Back to the district</button>`,
     );
     this.bind('close-credits', () => this.closeModal());
   }
-  private modal(title: string, copy: string, buttons: string) {
+  private modal(title: string, copy: string, body: string) {
     const root = this.root.querySelector('#modal-root');
     if (root) {
-      root.innerHTML = `<div class="modal-backdrop"><section class="modal" role="dialog" aria-modal="true" aria-label="${title}"><div class="eyebrow">${sun} POTHE POTHE</div><h2>${title}</h2><p>${copy}</p>${buttons}</section></div>`;
+      root.innerHTML = `<div class="modal-backdrop"><section class="modal" role="dialog" aria-modal="true" aria-label="${title}"><small>POTHE POTHE / DISTRICT 01</small><h2>${title}</h2><p>${copy}</p>${body}</section></div>`;
       root.querySelector<HTMLButtonElement>('button')?.focus();
     }
   }
@@ -183,16 +269,16 @@ export class UI {
     return !!this.root.querySelector('.modal');
   }
   toast(message: string) {
-    const toast = this.root.querySelector('.toast');
-    if (!toast) return;
-    toast.textContent = message;
-    toast.classList.add('show');
+    const el = this.root.querySelector('.toast');
+    if (!el) return;
+    el.textContent = message;
+    el.classList.add('show');
     clearTimeout(this.toastTimer);
-    this.toastTimer = window.setTimeout(() => toast.classList.remove('show'), 3400);
+    this.toastTimer = window.setTimeout(() => el.classList.remove('show'), 3000);
   }
   sound(muted: boolean) {
     this.root.querySelectorAll<HTMLButtonElement>('[data-action="mute"]').forEach((el) => {
-      el.textContent = muted ? '♪̸' : '♫';
+      el.classList.toggle('muted', muted);
       el.setAttribute('aria-pressed', String(muted));
       el.setAttribute('aria-label', muted ? 'Unmute audio' : 'Mute audio');
     });

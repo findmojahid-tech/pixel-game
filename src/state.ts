@@ -1,7 +1,8 @@
-export type Place = 'street' | 'stall';
+import { roomBounds, type Place, type ZoneId, ZONES } from './district';
+export type { Place } from './district';
 export type Tea = 'milk' | 'lemon';
 export interface SaveData {
-  version: 1;
+  version: 2;
   wallet: number;
   cups: number;
   place: Place;
@@ -10,7 +11,10 @@ export interface SaveData {
   metSeller: boolean;
   muted: boolean;
   savedAt: number;
+  visited: ZoneId[];
+  bookmark: boolean;
 }
+// Retain the storage key so the previous milestone migrates in place.
 export const SAVE_KEY = 'pothe-pothe.save.v1';
 export const BACKUP_KEY = `${SAVE_KEY}.backup`;
 export const TEAS = {
@@ -19,69 +23,98 @@ export const TEAS = {
 } as const;
 export function freshSave(): SaveData {
   return {
-    version: 1,
+    version: 2,
     wallet: 100,
     cups: 0,
-    place: 'street',
-    x: 650,
-    y: 250,
+    place: 'district',
+    x: 480,
+    y: 390,
     metSeller: false,
     muted: false,
     savedAt: 0,
+    visited: ['courtyard'],
+    bookmark: false,
   };
 }
 export function validSave(value: unknown): value is SaveData {
   if (!value || typeof value !== 'object') return false;
   const s = value as SaveData;
+  const b = roomBounds[s.place];
   return (
-    s.version === 1 &&
+    s.version === 2 &&
+    !!b &&
     Number.isInteger(s.wallet) &&
     s.wallet >= 0 &&
     s.wallet <= 100000 &&
     Number.isInteger(s.cups) &&
     s.cups >= 0 &&
     s.cups <= 100000 &&
-    (s.place === 'street' || s.place === 'stall') &&
     Number.isFinite(s.x) &&
     Number.isFinite(s.y) &&
-    s.x >= (s.place === 'street' ? 14 : 172) &&
-    s.x <= (s.place === 'street' ? 1786 : 467) &&
-    s.y >= (s.place === 'street' ? 236 : 194) &&
-    s.y <= (s.place === 'street' ? 343 : 309) &&
+    s.x >= b.x &&
+    s.x <= b.x + b.w &&
+    s.y >= b.y &&
+    s.y <= b.y + b.h &&
     typeof s.metSeller === 'boolean' &&
     typeof s.muted === 'boolean' &&
-    Number.isFinite(s.savedAt)
+    Number.isFinite(s.savedAt) &&
+    typeof s.bookmark === 'boolean' &&
+    Array.isArray(s.visited) &&
+    new Set(s.visited).size === s.visited.length &&
+    s.visited.every((id) => ZONES.some((z) => z.id === id))
   );
+}
+export function migrateSave(value: unknown): SaveData | null {
+  if (validSave(value)) return value;
+  if (!value || typeof value !== 'object') return null;
+  const s = value as Record<string, unknown>;
+  if (
+    s.version !== 1 ||
+    !['street', 'stall'].includes(String(s.place)) ||
+    typeof s.metSeller !== 'boolean' ||
+    typeof s.muted !== 'boolean' ||
+    !Number.isFinite(s.savedAt) ||
+    !Number.isFinite(s.x) ||
+    !Number.isFinite(s.y)
+  )
+    return null;
+  const migrated = {
+    ...freshSave(),
+    wallet: s.wallet,
+    cups: s.cups,
+    metSeller: s.metSeller,
+    muted: s.muted,
+    savedAt: s.savedAt,
+  };
+  return validSave(migrated) ? migrated : null;
 }
 export interface StorageLike {
   getItem(key: string): string | null;
   setItem(key: string, value: string): void;
 }
 export function loadSave(storage: StorageLike): SaveData | null {
-  for (const key of [SAVE_KEY, BACKUP_KEY]) {
+  for (const key of [SAVE_KEY, BACKUP_KEY])
     try {
       const raw = storage.getItem(key);
       if (raw) {
-        const data: unknown = JSON.parse(raw);
-        if (validSave(data)) return data;
+        const result = migrateSave(JSON.parse(raw));
+        if (result) return result;
       }
     } catch {
       /* Try last good snapshot. */
     }
-  }
   return null;
 }
 export function persist(storage: StorageLike, data: SaveData): boolean {
   if (!validSave(data)) return false;
   try {
     const previous = storage.getItem(SAVE_KEY);
-    if (previous) {
+    if (previous)
       try {
-        if (validSave(JSON.parse(previous))) storage.setItem(BACKUP_KEY, previous);
+        if (migrateSave(JSON.parse(previous))) storage.setItem(BACKUP_KEY, previous);
       } catch {
-        /* Invalid previous save must not overwrite backup. */
+        /* Preserve valid backup. */
       }
-    }
     storage.setItem(SAVE_KEY, JSON.stringify({ ...data, savedAt: Date.now() }));
     return true;
   } catch {
@@ -89,14 +122,18 @@ export function persist(storage: StorageLike, data: SaveData): boolean {
   }
 }
 export function orderTea(state: SaveData, tea: Tea): { ok: boolean; state: SaveData } {
-  const price = TEAS[tea].price;
-  if (state.wallet < price) return { ok: false, state };
+  if (state.wallet < TEAS[tea].price) return { ok: false, state };
   return {
     ok: true,
-    state: { ...state, wallet: state.wallet - price, cups: state.cups + 1, metSeller: true },
+    state: {
+      ...state,
+      wallet: state.wallet - TEAS[tea].price,
+      cups: state.cups + 1,
+      metSeller: true,
+    },
   };
 }
 export function direction(x: number, y: number): { x: number; y: number } {
-  const length = Math.hypot(x, y);
-  return length > 1 ? { x: x / length, y: y / length } : { x, y };
+  const l = Math.hypot(x, y);
+  return l > 1 ? { x: x / l, y: y / l } : { x, y };
 }
