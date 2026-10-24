@@ -1,79 +1,65 @@
 # POTHE POTHE · পথে পথে
 
-**District 01 — the neighbourhood edition.** A playable 2D Bangladesh adventure built with Phaser 4.2.1, TypeScript and Vite. Revision 0.2 replaces the first milestone's horizontal lane with a connected, two-axis district and a new visual system.
+**Revision 0.3 — side-view art-direction prototype, pending graphics approval.** Phaser 4.2.1, TypeScript and Vite. This review branch starts at `c7babe1` and preserves revision 0.2 as a working fallback.
 
-## Run
+The default game is now a real side-scrolling Bangladesh street with original PNG sprite families, two connected outdoor sections and an enterable tea stall. It is not a static concept-art page. The original overhead district remains playable with `?view=district` and its original branch remains unchanged.
 
-Node 22.12+ is required; Node 24 is pinned in `.nvmrc`.
+## Run and play
+
+Node 22.12+ (Node 24 pinned in `.nvmrc`).
 
 ```sh
 npm ci
 npm run dev
 ```
 
-In this cloud environment, use `npm_config_cache=/tmp/pothe-pothe-npm npm ci` if the default home cache is unwritable.
+In this cloud environment use a writable npm cache when needed: `npm_config_cache=/tmp/pothe-pothe-npm npm ci`.
 
-## A neighbourhood, six places
+- **A/D or left/right:** walk; **Shift:** run.
+- **E:** enter the tea stall, talk, leave or read a connection. Near the delivery crate, E also hops.
+- **Space/W/up:** hop. Collision prevents walking through the delivery crate; hopping clears it.
+- **Esc:** close dialogue, pause or resume. **V:** mute.
+- **Mobile:** hold left/right on the existing D-pad, tap up to hop and E to interact.
+- The pause menu saves the walk or returns to the title. Continue restores it after reload.
 
-The outdoor map is **1920 × 1400 native pixels**, with continuous routes and over 1.5 million collision-tested reachable square pixels. Four outdoor areas form a loop; two buildings open into their own interiors. There are no loading gates between the outdoor areas.
+Start near Rahim Mama's tea-stall entrance. Enter, walk right to the seller, and press E. Milk tea costs fictional BDT 15 and lemon tea BDT 10. To leave, walk to the left doorway and interact. Continue right along the street, hop the delivery crate, and explore River Road. The far-right sign marks a future connection, not an implemented extra district. The west connection and title-screen link open the preserved revision 0.2.
 
-| Place | What to find | Connections |
-| --- | --- | --- |
-| Cha-er Adda | Tea courtyard, benches, flower seller, bunting | Bazaar east; crossing south; tea stall doorway |
-| Shapla Bazaar | Fruit, fish and spice stalls, umbrella carts, pedestrians | Courtyard west; Bakul Lane south; reading-room doorway |
-| Rickshaw Crossing | Yielding traffic, bus, rickshaw stand, repair shop, lily pond | Courtyard north; Bakul Lane east |
-| Bakul Lane | Residential houses, gardens, laundry, a neighbour's story | Bazaar north; crossing west |
-| Rahim Mama's tea stall | Counter, kettle, newspaper tables, Bengali conversation, milk/lemon tea | Courtyard |
-| The Reading Room | Bookshelves, reading table, sofa, Nila's free bookmark | Bazaar |
+## What is implemented
 
-Start at the tea courtyard. Walk north to Rahim Mama's doorway or east toward the bazaar. You can also head south toward the crossing and loop around through the residential lanes. **M opens the district map.** Discoveries, tea purchases and the bookmark persist.
+- A side-on floor plane and horizontally following, pixel-snapped camera.
+- Detailed original Old Dhaka facades, bright sky/river/city layer, tropical foliage, street lights, bench and produce PNGs. Background, foliage, facades and foreground use different scroll factors.
+- A larger original side-profile protagonist (80px visual height), six walk frames and six breathing/blink idle frames.
+- Original side-profile rickshaw and CNG sheets, moving rear-lane traffic, pedestrians and an animated tea seller.
+- A detailed warm tea-stall interior, Bengali dialogue with English translation, existing BDT purchase/refusal logic and local save/load.
+- Native-size Bengali exterior signs/menu board, compact English pixel HUD, context prompts and touch controls.
+- Two outdoor sections and one interior only. The rest of revision 0.2 was **not** converted.
 
-## Controls
+## Art acceptance is still open
 
-- **WASD / arrows:** walk; **Shift:** run.
-- **E:** enter, talk or leave when the small prompt appears.
-- **M / Tab:** open or close the district map.
-- **Esc:** close dialogue, pause or resume.
-- **V / sound button:** mute audio.
-- **Mobile:** hold the directional controls and tap E. Portrait and landscape resizing are supported.
+All four attached references were inspected before asset production. The new PNG-based presentation is a substantial method/perspective change, but **reference-quality parity is not claimed**. The generated walk sheet still repeats phases; a human pixel-animation pass is required for Reference 04's consistency and movement quality. Vehicle cycles and some dense material/edge clusters also need cleanup. See [art review](docs/sideview/ART-REVIEW.md), [reference study](docs/sideview/ART-DIRECTION.md) and [remaining asset plan](docs/sideview/ASSET-PRODUCTION-PLAN.md).
 
-The pause menu provides manual saving and save-to-menu. Autosaves happen on transitions, purchases, discoveries and every 10 seconds. Continue restores the current location after a browser reload. Milestone-one saves migrate to the new courtyard while retaining money, tea progress and mute settings. Saves remain local to the current browser origin and device.
+The original high-resolution image-assisted PNGs are retained in `assets/sideview/source`; normalized runtime PNGs and frame metadata are in `public/assets/sideview`. Main visual assets are not generated from canvas rectangles at runtime. The four copyrighted user references are reference-only and are not shipped as game textures or committed to the public repository. Local side-by-side review artifacts keep originals clearly separated from real gameplay captures.
 
-## What changed visually
+## Saves and fallback
 
-- A bright ochre/coral/turquoise palette, navy outlines, stepped foliage, palm trees, varied roof heights, patterned lintels, market umbrellas, tiled courtyards, flower beds, balconies and local street details.
-- A **36 × 54** protagonist with a turquoise outfit, red scarf, satchel, larger face, six walk poses and breathing/blinking idle poses. Named NPCs and twelve roaming pedestrians populate different activity pockets.
-- Layered buildings and trees, transparent canopies when they hide the player, draped bunting, drifting leaves, cats, rickshaws, CNGs and a bus. Traffic yields to the player.
-- Full-window, integer-scaled pixel rendering and smooth camera movement on both axes. Bangla signs render separately as native-size text aligned to world signboards, rather than being baked into low-resolution enlarged textures.
-- A small location badge, wallet and map/pause controls replace the old quest panel and persistent minimap. Context prompts sit next to the character. Dialogue is shown only during conversations.
-- Fast warm door fades, discovery chimes, brief particles, exact wallet feedback, and a visible tea cup after a purchase. Reduced-motion preferences suppress ambient animation and shorten particles.
+The existing validated revision-0.2 save remains authoritative for money, tea count, mute, bookmark and district discoveries. Side-view transactions reuse `orderTea` and update that economy without changing the old saved world/place/coordinates. Side-view coordinates/discoveries use a separate versioned key, `pothe-pothe.sideview.v1`, with last-good backup. Entering the prototype does not reset the existing BDT balance. A genuinely fresh save starts at BDT 100.
 
-Screenshots from actual gameplay are in [`docs/screenshots/v2`](docs/screenshots/v2); original milestone screenshots remain in [`docs/screenshots`](docs/screenshots). The capture script walks the district with real key input and enters buildings; it does not teleport the player or fabricate screenshots.
+Open `?view=district` or use the title link to play revision 0.2. Its complete six-area map, two interiors, NPCs, bookmark and controls remain available. See [revision 0.2 report](docs/REVISION-02.md).
 
-## Validate
+## Verify and capture
 
 ```sh
-npm run build      # TypeScript checking and production bundle
-npm test           # state, migration, currency and collision-route tests
-npm run test:e2e   # desktop district loop + touch/orientation + rendering/migration
-npm run preview    # serve the built dist directory
-npm run capture -- /tmp/pothe-pothe-v2  # requires an already running server
+npm run build            # typecheck and production bundle
+npm test                 # state/economy/preservation and PNG integrity checks
+npm run test:e2e         # both presentations; keyboard/mobile/native-resolution checks
+npm run assets:validate  # independent PNG alpha, colour and frame-registration QA
+npm run preview          # serve dist
+npm run capture -- /tmp/pothe-sideview-captures
+npm run capture:district -- /tmp/pothe-district-captures
 ```
 
-Browser tests use `/usr/bin/chromium`; override it with `CHROMIUM_PATH`. Set `CAPTURE_URL` when capturing the production preview instead of the development server.
+Browser tests build and serve a fresh production bundle. Set `PLAYWRIGHT_BASE_URL` to test a deployed preview instead. Capture scripts require a running server; set `CAPTURE_URL` to its address (including an authorized preview URL) and optionally `CHROMIUM_PATH`. Captures use real controls, not player teleports or fabricated gameplay images. PNG rebuilding is optional and requires Python/Pillow/NumPy/SciPy; standard Vite builds use the committed images. Raw asset provenance is in [SOURCES.md](assets/sideview/SOURCES.md).
 
-The browser suite uses real keyboard input and native emulated touches. It visits all six areas in a loop, enters/exits both interiors, buys tea, talks to named NPCs, collects a bookmark, saves and reloads, checks pause, rotates the viewport and verifies integer pixel scaling. Unit route tests flood-fill the **same collision geometry and player footprint used in gameplay**, including every outdoor conversation spot and both entrances.
+All deployment work is review-only. `vercel.json` retains `npm run build` and `dist`; the existing Vercel Git integration can preview this new branch. No main merge or production promotion is authorized. No paid services were purchased, and no Dhallywood/Meme Mode features were implemented.
 
-The Vite build still emits the full-Phaser-engine chunk-size advisory (about 382 KB gzip); it is not a build failure. Physical-device testing and headphone/speaker listening checks remain outstanding.
-
-## Audio and provenance
-
-All visual art is original, authored on an integer grid in `src/art.ts`; no reference images were available to inspect for this revision. Fonts ship locally with their SIL Open Font License notices. See [`docs/ART.md`](docs/ART.md).
-
-**Authentic Bengali voice recordings are still missing.** Bengali dialogue has English translations. Web Audio supports licensed human recordings, voice/ambience ducking, mute, and original synthesized effects. [`public/audio/voice/README.md`](public/audio/voice/README.md) contains the recording script and manifest format. No synthetic speech is presented as an authentic recording.
-
-## Deployment and scope
-
-`vercel.json` configures the Vite build (`npm run build`) and `dist` output. The original milestone was pushed to GitHub, but Vercel authorization/network access was not available; this revision does not imply a public deployment. No paid service is required.
-
-This is one fictional Old Dhaka district, not a full Bangladesh map. Two interiors are enterable; other buildings are scenery. Conversations, a six-place exploration journal, tea purchases and a bookmark keepsake are implemented. There is no combat, real-money checkout, online account, cloud save, movie/meme expansion or recorded speech. Tea costs fictional BDT (milk ৳15, lemon ৳10); a new journey begins with ৳100.
+Authentic Bengali voice recordings are still missing. Existing recorded-voice integration and original synthesized effects remain; see `public/audio/voice/README.md`. Physical-device/Safari testing and human listening checks remain outstanding. The build retains the full-Phaser-engine size advisory.

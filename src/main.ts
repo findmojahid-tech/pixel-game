@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
 import { World } from './world';
+import { Sideview } from './sideview/scene';
+const legacy = new URLSearchParams(location.search).get('view') === 'district';
 import './style.css';
 /** Integer physical pixel scaling, including after orientation changes. */
 function viewport() {
@@ -19,7 +21,7 @@ async function boot() {
     roundPixels: true,
     render: { antialias: false, pixelArt: true, roundPixels: true },
     scale: { mode: Phaser.Scale.NONE, autoCenter: Phaser.Scale.CENTER_BOTH, zoom: v.scale },
-    scene: [World],
+    scene: [legacy ? World : Sideview],
     input: { activePointers: 4 },
     audio: { noAudio: true },
   });

@@ -1,0 +1,22 @@
+[
+  {
+    "file": "01_city_character_atmosphere.jpg",
+    "sha256": "a7f1f33f7e73c41c196b2db42ea013d5a1663ea9b3f0a8c2367cd36e26d26068",
+    "use": "private visual direction reference only; not a game texture"
+  },
+  {
+    "file": "02_bright_coastal_sideview.jpg",
+    "sha256": "69d30ef3e8a3f88ed0c7e0b4f431fb190fc05f70c8ca19f4b1c51d154e183d62",
+    "use": "private visual direction reference only; not a game texture"
+  },
+  {
+    "file": "03_forest_sideview_dialogue.jpg",
+    "sha256": "c964896532cfea225a37c86d5c1b3a7e6811e350eb9933b5001439c3dda800f0",
+    "use": "private visual direction reference only; not a game texture"
+  },
+  {
+    "file": "04_sprite_run_sequence.jpg",
+    "sha256": "ecbde1a1f24091b5a04e8dd8c232ccfb0ce863dbe07c5ae6dc9e7b1df1493301",
+    "use": "private visual direction reference only; not a game texture"
+  }
+]

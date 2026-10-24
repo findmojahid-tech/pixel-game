@@ -1,0 +1,253 @@
+{
+  "version": 1,
+  "production": "Original image-gen assets, normalized offline with binary alpha, nearest resizing and shared per-sheet palettes. No user-reference pixels used as production art.",
+  "native_reference_viewport": [
+    640,
+    360
+  ],
+  "protagonist_height": 80,
+  "asset_records": [
+    {
+      "id": "facades",
+      "file": "facades.png",
+      "width": 671,
+      "height": 240,
+      "source": "facades.png",
+      "sha256": "3f29cb1c451a83a5b68b0f6895cfd3a5b9a08dbd6ffaf0975b3e47a41f0a7953",
+      "colors": 214
+    },
+    {
+      "id": "river",
+      "file": "river.png",
+      "width": 674,
+      "height": 185,
+      "source": "river.png",
+      "sha256": "ce5a29747bce778eaf27d5061343083ee2ad3ea8c343ba36c2f67d1cc07acb17",
+      "colors": 250
+    },
+    {
+      "id": "sky",
+      "file": "sky.png",
+      "width": 1080,
+      "height": 360,
+      "source": "sky.png",
+      "sha256": "499f03e6db1862fc18957728c55e49a5e6068a0d539a9c1b59d2dcce0b198885",
+      "colors": 128
+    },
+    {
+      "id": "sky-top",
+      "file": "sky-top.png",
+      "width": 32,
+      "height": 32,
+      "source": "sky.png",
+      "sha256": "23b6c4cd163cd1417fb868e30aca1badcf7136f0542c09465fdbd61ce4b0fb27",
+      "colors": 128
+    },
+    {
+      "id": "interior",
+      "file": "interior.png",
+      "width": 640,
+      "height": 360,
+      "source": "interior.png",
+      "sha256": "015b01bf14af89f8e6c9222da59bba4525e515de607202ec8e4a7a814913d015",
+      "colors": 128
+    },
+    {
+      "id": "pavement",
+      "file": "pavement.png",
+      "width": 128,
+      "height": 40,
+      "source": "interior.png",
+      "sha256": "bd3df871fd1ac6b1ff598162a613173aecc7e967524499dc66bad4081cca087c",
+      "colors": 128
+    },
+    {
+      "id": "curb",
+      "file": "curb.png",
+      "width": 640,
+      "height": 35,
+      "source": "interior.png",
+      "sha256": "2eb832a94923d26f68019e72f08f1b3306c55672a6392034e8c6f9594433b710",
+      "colors": 128
+    },
+    {
+      "id": "hero-walk",
+      "file": "hero-walk.png",
+      "width": 528,
+      "height": 96,
+      "source": "hero.png",
+      "sha256": "586bad61fed270a0751111605d91e61590dc9b696a6fbd52920909550aa7c750",
+      "colors": 129,
+      "frameWidth": 88,
+      "frameHeight": 96,
+      "frames": 6,
+      "baseline": 90
+    },
+    {
+      "id": "hero-idle",
+      "file": "hero-idle.png",
+      "width": 528,
+      "height": 96,
+      "source": "hero.png",
+      "sha256": "1b1eee7a921a300671ce33450830e0faf00a0476f1092c3b2c83ce20d6874b72",
+      "colors": 129,
+      "frameWidth": 88,
+      "frameHeight": 96,
+      "frames": 6,
+      "baseline": 90
+    },
+    {
+      "id": "hero-portrait",
+      "file": "hero-portrait.png",
+      "width": 48,
+      "height": 43,
+      "source": "hero.png",
+      "sha256": "389b6dd4adf704d44ff1e378eb3e18fd0a68872f82f8283a20ec8a0b3eb5d7bc",
+      "colors": 119
+    },
+    {
+      "id": "rahim",
+      "file": "rahim.png",
+      "width": 264,
+      "height": 96,
+      "source": "npcs.png",
+      "sha256": "b5ea193c1dbf59887b7f7dd5cef15f70836ef2a2a7cac4aa7b2059b8e30bc437",
+      "colors": 129,
+      "frameWidth": 88,
+      "frameHeight": 96,
+      "frames": 3,
+      "baseline": 90
+    },
+    {
+      "id": "rahim-portrait",
+      "file": "rahim-portrait.png",
+      "width": 56,
+      "height": 50,
+      "source": "npcs.png",
+      "sha256": "109156f6eafaea731a73053533d35be0e12cad0250c7bd79e6518b745294fabd",
+      "colors": 116
+    },
+    {
+      "id": "pedestrian",
+      "file": "pedestrian.png",
+      "width": 336,
+      "height": 96,
+      "source": "npcs.png",
+      "sha256": "214277f2ae642ea23610ffbac3970572bc2465c9de3a252e89497895e7abce15",
+      "colors": 129,
+      "frameWidth": 112,
+      "frameHeight": 96,
+      "frames": 3,
+      "baseline": 90
+    },
+    {
+      "id": "rickshaw",
+      "file": "rickshaw.png",
+      "width": 438,
+      "height": 112,
+      "source": "vehicles.png",
+      "sha256": "e4b18476ab91f6d90e53fff708e170ce136c193529a8c237d96fdb658eb25afd",
+      "colors": 129,
+      "frameWidth": 146,
+      "frameHeight": 112,
+      "frames": 3,
+      "baseline": 106
+    },
+    {
+      "id": "cng",
+      "file": "cng.png",
+      "width": 438,
+      "height": 112,
+      "source": "vehicles.png",
+      "sha256": "ed172e86ba5eb95f9e9bff868ffc5e50a8c161c349f5a6611116f656b68d3d78",
+      "colors": 129,
+      "frameWidth": 146,
+      "frameHeight": 112,
+      "frames": 3,
+      "baseline": 106
+    },
+    {
+      "id": "banyan",
+      "file": "banyan.png",
+      "width": 263,
+      "height": 235,
+      "source": "props.png",
+      "sha256": "e40f297aba210c693cd4f6bb4a09307dd3f6346a022f69c58b552054562cd586",
+      "colors": 252
+    },
+    {
+      "id": "bananas",
+      "file": "bananas.png",
+      "width": 127,
+      "height": 130,
+      "source": "props.png",
+      "sha256": "a35e8c0bc8afc794a494c701b3c94f8a7c665319cbd4e68105a1661ca98a7dbd",
+      "colors": 231
+    },
+    {
+      "id": "produce",
+      "file": "produce.png",
+      "width": 93,
+      "height": 55,
+      "source": "props.png",
+      "sha256": "f333108c6e749a949f9d2fc6799c29bfdf7fa5255eece772d705c93d0d3486de",
+      "colors": 196
+    },
+    {
+      "id": "bench",
+      "file": "bench.png",
+      "width": 87,
+      "height": 52,
+      "source": "props.png",
+      "sha256": "208c01c2542630080d98e02967f7f402e1ce17d947dfc7152c8eaa80d78ad012",
+      "colors": 204
+    },
+    {
+      "id": "palm",
+      "file": "palm.png",
+      "width": 175,
+      "height": 245,
+      "source": "props.png",
+      "sha256": "23c3e845030d1902d8c6a767362f64072a623c4d4444e19ae6adc3829c46dc4c",
+      "colors": 253
+    },
+    {
+      "id": "lamp",
+      "file": "lamp.png",
+      "width": 66,
+      "height": 165,
+      "source": "props.png",
+      "sha256": "671cee352c578891704ba041c91b6b7ed9d17b18a2b4f358ae3961aada662084",
+      "colors": 240
+    },
+    {
+      "id": "crate",
+      "file": "crate.png",
+      "width": 40,
+      "height": 24,
+      "source": "props.png",
+      "sha256": "1c8f44a2b98cbe1ff998d6a7489613f6d60e00e40abb72be5b18b61c9f65b192",
+      "colors": 113
+    },
+    {
+      "id": "pedestrian-portrait",
+      "file": "pedestrian-portrait.png",
+      "width": 48,
+      "height": 43,
+      "source": "npcs.png",
+      "sha256": "910a49a8bbc4d8c602167406c1f26a9be8e798ac9f234b66a1e045de80f4405e",
+      "colors": 119
+    }
+  ],
+  "source_hashes": {
+    "npcs.png": "9bc8f52ef510c16d78e42ca5dcb00b1b5214fb9ffb6192b15acf2b4d08c1f385",
+    "hero.png": "ed20fdc1a63921014be9b62645b0253f419905cf095acc5f2c03786809c14571",
+    "interior.png": "9ef5e29655cfb60ff15a50ceeb682f29f2557fa680b187f58a9113d3730e937e",
+    "facades.png": "60de79bea358c20883ec9b23f495554c65ce0a3cce8fd163569858056f377350",
+    "props.png": "02c4afb0e52b1856e9da85a38d4ace9652645a8c8318e25ebf17779778fcfcca",
+    "hero-original.png": "5c2aded550dc57e8aca6d698403e701c2c38bdb3e3f222679b8634b2710b5cec",
+    "vehicles.png": "e7e7a25bf4fc036358e6d2f3121c7eae0c0c6f34fda00fdbeba1a9e5af110b56",
+    "sky.png": "acb9fec14ab5b9e854f74f70a24c853ce0dd40e712a47eaa80814bdee41471d9",
+    "river.png": "19a76ca2d44100185f46febb77f013195ae496e1177b65140b347966bc196d44"
+  }
+}

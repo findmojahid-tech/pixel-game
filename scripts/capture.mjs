@@ -2,6 +2,8 @@
 import { chromium } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
+const legacyURL = new URL(process.env.CAPTURE_URL || 'http://127.0.0.1:5173');
+legacyURL.searchParams.set('view', 'district');
 const output = resolve(process.argv[2] || '/tmp/pothe-pothe-v2');
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({
@@ -13,7 +15,7 @@ try {
   p.on('pageerror', (e) => {
     throw e;
   });
-  await p.goto(process.env.CAPTURE_URL || 'http://127.0.0.1:5173');
+  await p.goto(legacyURL.toString());
   await p.getByRole('button', { name: 'Begin your journey' }).waitFor();
   await p.waitForTimeout(700);
   const shot = async (name) => {
@@ -104,7 +106,7 @@ try {
     hasTouch: true,
   });
   const m = await ctx.newPage();
-  await m.goto(process.env.CAPTURE_URL || 'http://127.0.0.1:5173');
+  await m.goto(legacyURL.toString());
   await m.getByRole('button', { name: 'Begin your journey' }).waitFor();
   await m.waitForTimeout(500);
   await m.screenshot({ path: resolve(output, 'mobile-menu.png') });

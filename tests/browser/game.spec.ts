@@ -16,7 +16,7 @@ type Snapshot = {
 const snap = (p: Page) =>
   p.evaluate(() => (window as unknown as { __POTHE__: Snapshot }).__POTHE__);
 async function start(p: Page) {
-  await p.goto('/');
+  await p.goto('/?view=district');
   await p.getByRole('button', { name: 'Begin your journey' }).click();
   await expect.poll(async () => (await snap(p)).mode).toBe('playing');
   await p.waitForTimeout(450);
@@ -172,7 +172,7 @@ test('native mobile touch, readable signs, tea ordering, pause and orientation c
 });
 test('integer pixel scaling, compact HUD, and legacy save migration', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto('/');
+  await page.goto('/?view=district');
   await page.evaluate(() =>
     localStorage.setItem(
       'pothe-pothe.save.v1',

@@ -1,15 +1,17 @@
 {
   "name": "pothe-pothe",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "vitest run --exclude tests/browser/**",
+    "test": "vitest run",
     "test:e2e": "playwright test",
-    "capture": "node scripts/capture.mjs"
+    "capture": "node scripts/capture-sideview.mjs",
+    "capture:district": "node scripts/capture.mjs",
+    "assets:validate": "python3 tools/validate-sideview-assets.py"
   },
   "dependencies": {
     "phaser": "4.2.1",
