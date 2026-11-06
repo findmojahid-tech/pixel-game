@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<meta name="theme-color" content="#0d0d0f"/><title>ParroDash · TPARRO Workspace</title>
+<meta name="theme-color" content="#0d0d0f"/><title>ParroDash | TPARRO Workspace</title>
 <meta name="robots" content="noindex,nofollow"/>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxNyIgZmlsbD0iIzExMSIvPjxwYXRoIGQ9Ik0xOCAxNmgxOWMxMCAwIDE2IDYgMTYgMTVTNDcgNDcgMzcgNDdIMjlWNTZIMThWMTZabTExIDExdjEwaDhjNCAwIDYtMiA2LTVzLTItNS02LTVoLThaIiBmaWxsPSIjZmZmIi8+PC9zdmc+Cg=="/>
 <style>:root{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#ececed;background:#0d0d0f;font-synthesis:none;--bg:#0d0d0f;--sidebar:#111113;--panel:#171719;--panel2:#1c1c1f;--panel3:#222226;--hover:#28282d;--stroke:#303034;--stroke2:#242428;--text:#f2f2f3;--muted:#8f8f98;--white:#fff;--green:#52c58b;--green-bg:#123121;--yellow:#f2bd59;--yellow-bg:#352b19;--red:#f37480;--red-bg:#3b1f23;--radius:14px}
@@ -46,6 +46,39 @@
 @media(max-width:1150px){.px-yeargrid{grid-template-columns:repeat(2,minmax(0,1fr))}.px-auth-hero{padding:32px!important}}
 @media(max-width:780px){.px-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.px-overview-columns,.px-assistant{grid-template-columns:1fr}.px-overview-head,.px-cal-heading{align-items:flex-start;flex-direction:column}.px-yeargrid{grid-template-columns:repeat(2,minmax(0,1fr))}.px-auth-preview{display:none}.px-auth-hero{gap:18px}.px-auth-inner h1{font-size:35px}.px-auth-inner>p{font-size:12px}}
 @media(max-width:500px){.px-yeargrid,.px-metrics{grid-template-columns:1fr}.px-card{padding:15px}.px-month-grid{row-gap:5px}.px-overview-head h2{font-size:23px}.px-cal-heading h2{font-size:23px}.px-month{padding:14px}.px-auth-hero{min-height:255px!important}.px-auth-inner h1{font-size:29px}.px-auth-inner>p{display:none}.px-auth-nav{margin-top:8px}}
+
+
+/* Clear, interactive onboarding and complete module navigation. */
+:root{--bg:#0b0b0f;--sidebar:#111116;--panel:#16161c;--panel2:#1c1c23;--stroke:#32323b;--hover:#282831;}
+.auth-wrap{grid-template-columns:minmax(0,1.1fr) minmax(390px,.9fr)}
+.px-auth-hero{background:radial-gradient(circle at 30% 40%,#272731,transparent 48%),linear-gradient(135deg,#15151b,#101014 75%)!important;box-shadow:inset -1px 0 0 #36363f;}
+.px-auth-inner h1{font-weight:800;max-width:620px;line-height:1.06;letter-spacing:-.075em}
+.px-auth-controlbar{border-top:1px solid #3c3c46;padding-top:18px;width:100%;max-width:540px;}
+.px-auth-controlhead{display:flex;justify-content:space-between;align-items:center;color:#9e9eab;font-size:10px;letter-spacing:.15em;font-weight:750;margin-bottom:14px}
+.px-auth-controlhead strong{font-size:12px;letter-spacing:.08em;color:#fff}
+.px-auth-nav{gap:12px}.px-auth-dots{gap:5px;align-items:center}
+.px-auth-dots button{width:32px!important;height:32px!important;display:grid;place-items:center;background:#26262f;border:1px solid #494954!important;border-radius:7px!important;color:#a5a5b4;font-size:10px;font-weight:800;transition:.2s}
+.px-auth-dots button[aria-current="true"]{width:32px!important;color:#101015;background:#f2f2f6!important;border-color:#f2f2f6!important}
+.px-auth-arrows{gap:8px}
+.px-auth-arrows button{width:auto!important;height:44px!important;min-width:112px;background:#25252f!important;border:1px solid #52525d!important;border-radius:10px!important;color:#f9f9fc!important;padding:0 15px;font-weight:720;font-size:12px}
+.px-auth-arrows button:hover{background:#41414b!important;transform:translateY(-1px)}
+.px-auth-arrows button:focus-visible,.px-auth-dots button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+#px-slide-cover{width:100%;height:260px;object-fit:cover;object-position:center}
+.px-slide-setting-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-bottom:17px}
+.px-slide-setting{background:#17171d;border:1px solid #32323b;border-radius:17px;padding:21px;display:flex;flex-direction:column;gap:12px}
+.px-slide-setting-num{letter-spacing:.13em;font-size:10px;color:#9191a0;font-weight:730}
+.px-slide-setting-preview{height:125px;border-radius:11px;border:1px solid #35353f;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 0 0,#383844,#1c1c24 60%)}
+.px-slide-setting-preview img{width:100%;height:100%;object-fit:cover}
+.px-slide-placeholder{font-size:52px;font-weight:900;color:#c6c6d0;opacity:.22}
+.px-slide-setting h3{font-size:20px;font-weight:760;line-height:1.15}
+.px-slide-setting p{color:#a1a1ad;font-size:12px;line-height:1.65;flex:1}
+.px-slide-setting .px-btn{align-self:flex-start;margin-top:auto}
+.nav-groups{scrollbar-width:thin;scrollbar-color:#4a4a55 transparent}
+.nav-top{border-bottom-color:#383840}.nav-footer{background:#101016}
+@media(max-width:1100px){.px-slide-setting-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:780px){.px-auth-hero{min-height:410px}.px-auth-controlbar{max-width:100%}}
+@media(max-width:720px){.auth-wrap{grid-template-columns:1fr}.auth-hero.px-auth-hero{display:flex!important;min-height:330px!important;padding:24px 26px 18px!important}.auth-form-wrap{min-height:0!important;padding:30px 24px 52px!important}.px-auth-inner h1{font-size:29px}.px-auth-inner p{display:block!important;font-size:12px}.px-auth-preview{display:none}.px-slide-setting-grid{grid-template-columns:1fr}.px-auth-arrows button{min-width:96px!important;padding:0 8px}}
+@media(max-width:420px){.px-auth-controlhead{font-size:9px}.px-auth-arrows button{min-width:80px!important;font-size:11px}.px-auth-dots button{width:27px!important}.px-auth-hero{gap:8px!important}}
 
 </style></head>
 <body><div id="app"></div>
@@ -129,6 +162,20 @@ function workspaceAssistant(ctx){
  return `<div class="px-assistant"><section class="px-card px-ai-composer"><div class="px-smallcaps">CHATGPT WORKSPACE</div><h2>Get help with your work.</h2><p>Ask ChatGPT to help write, plan and organize. Your ParroDash records are not shared automatically.</p><label for="px-ai-text">What do you need help with?</label><textarea class="input" id="px-ai-text" rows="7" placeholder="Write a project brief, plan a team meeting, draft an announcement..."></textarea><div class="px-actions">${action('Copy prompt','assistant-copy')}${action('Continue in ChatGPT','assistant-open','','px-main')}</div></section>
  <section class="px-card"><div class="px-section-head"><h2>Start with a template</h2></div>${promptSet.map((x,i)=>`<button class="px-prompt" type="button" data-act="assistant-template" data-id="${i}"><span>${H(x[0])}</span><small>${H(x[1])}</small></button>`).join('')}<p class="px-disclaimer">This opens your ChatGPT account in a separate tab, not an embedded assistant. Native in-app AI would require a separately authorized provider integration.</p></section></div>`;
 }
+function loginSliderSettings(ctx){
+ const slides=(ctx.records?.login_slides||[]).slice().sort((a,b)=>a.position-b.position);
+ const defaults=[
+  {position:1,eyebrow:'WORK, WITHOUT THE CLUTTER',headline:'All your work. One calm space.',description:'Keep projects, tasks, notes and deliverables connected.'},
+  {position:2,eyebrow:'ONE TEAM, EVERY DETAIL',headline:'People and progress, together.',description:'Invite teammates, assign tasks and see every project moving forward.'},
+  {position:3,eyebrow:'A MORE THOUGHTFUL WORKDAY',headline:'Make room for what matters.',description:'Plan holidays, time off and keep teams aligned.'}
+ ];
+ return `<div class="px-slide-settings"><div class="px-overview-head"><div><div class="px-smallcaps">WORKSPACE APPEARANCE</div><h2>Login & sign up slider</h2><p>Change the three slides on the left side of the login and registration screens. Updates appear on the public landing page.</p></div><div class="px-actions"><button type="button" class="px-btn px-main" data-act="slider-preview">Preview login slider</button></div></div>
+ <div class="px-slide-setting-grid">${defaults.map(f=>{
+ const v=slides.find(r=>r.position===f.position)||f;
+ return `<article class="px-slide-setting"><div class="px-slide-setting-num">SLIDE ${String(v.position).padStart(2,'0')} / 03</div><div class="px-slide-setting-preview">${v.image_url?`<img src="${H(v.image_url)}" alt="Slide cover" loading="lazy" referrerpolicy="no-referrer">`:'<span class="px-slide-placeholder">P</span>'}</div><div class="px-smallcaps">${H(v.eyebrow)}</div><h3>${H(v.headline)}</h3><p>${H(v.description)}</p><button type="button" class="px-btn" data-act="slider-edit" data-id="${v.position}">Edit slide ${v.position}</button></article>`;
+ }).join('')}</div><div class="px-card"><strong>How this works</strong><p class="px-empty" style="padding:8px 0 0">Visitors can switch slides with Previous / Next or the numbered slide dots. You can update the headline, copy and optional HTTPS cover image. Only Founder or Co-founder-level accounts can save these changes.</p></div></div>`;
+}
+
 const assistantPrompts=promptSet.map(p=>p[1]);
 
 const promoSlides=[
@@ -140,26 +187,43 @@ function paintAuthHero(hero){
  if(!hero)return;
  hero.classList.add('px-auth-hero');
  hero.innerHTML=`<div class="px-auth-brand"><span class="brand-symbol">P</span><div><strong>ParroDash</strong><small>TPARRO WORKSPACE</small></div></div>
- <div class="px-auth-inner"><div class="px-smallcaps" id="px-slide-tag"></div><h1 id="px-slide-title"></h1><p id="px-slide-detail"></p>
- <div class="px-auth-preview"><div class="px-preview-top"><span class="px-preview-dots"><i></i><i></i><i></i></span><span>TPARRO / Workspace</span><b id="px-slide-type">Tasks</b></div><div class="px-preview-body"><div class="px-preview-side"><i></i><i></i><i></i><i></i></div><div class="px-preview-grid"><div class="px-preview-header"><strong id="px-slide-stat"></strong><span>Workspace</span></div><div class="px-preview-row"><span></span><i></i><b></b></div><div class="px-preview-row"><span></span><i></i><b></b></div><div class="px-preview-row"><span></span><i></i><b></b></div><div class="px-preview-progress"><i></i></div></div></div></div></div>
- <div class="px-auth-nav"><div class="px-auth-dots" id="px-slide-dots"></div><div class="px-auth-arrows"><button type="button" id="px-slide-prev" aria-label="Previous slide">&#8592;</button><button type="button" id="px-slide-next" aria-label="Next slide">&#8594;</button></div></div>`;
- let current=0;
+ <div class="px-auth-inner"><div class="px-smallcaps" id="px-slide-tag">WORKSPACE</div><h1 id="px-slide-title" aria-live="polite"></h1><p id="px-slide-detail"></p>
+ <div class="px-auth-preview" id="px-preview-container"><img id="px-slide-cover" alt="Workspace slider cover" referrerpolicy="no-referrer" style="display:none">
+ <div id="px-preview-fallback"><div class="px-preview-top"><span class="px-preview-dots"><i></i><i></i><i></i></span><span>TPARRO / Workspace</span><b id="px-slide-type">Tasks</b></div><div class="px-preview-body"><div class="px-preview-side"><i></i><i></i><i></i><i></i></div><div class="px-preview-grid"><div class="px-preview-header"><strong id="px-slide-stat"></strong><span>Workspace</span></div><div class="px-preview-row"><span></span><i></i><b></b></div><div class="px-preview-row"><span></span><i></i><b></b></div><div class="px-preview-row"><span></span><i></i><b></b></div><div class="px-preview-progress"><i></i></div></div></div></div></div></div>
+ <div class="px-auth-controlbar"><div class="px-auth-controlhead"><span class="px-auth-control-label">EXPLORE THE WORKSPACE</span><strong id="px-slide-count">01 / 03</strong></div>
+ <div class="px-auth-nav"><div class="px-auth-dots" id="px-slide-dots" aria-label="Select slide"></div>
+ <div class="px-auth-arrows"><button type="button" id="px-slide-prev" aria-label="Previous slide"><span aria-hidden="true">←</span> Previous</button><button type="button" id="px-slide-next" aria-label="Next slide">Next <span aria-hidden="true">→</span></button></div></div></div>`;
+ let current=0,slides=promoSlides.slice();
  const update=()=>{
-  if(!hero.isConnected)return;
-  const slide=promoSlides[current];
+  if(!hero.isConnected||!slides.length)return;
+  const slide=slides[current];
   hero.querySelector('#px-slide-tag').textContent=slide.tag;
   hero.querySelector('#px-slide-title').textContent=slide.title;
   hero.querySelector('#px-slide-detail').textContent=slide.detail;
-  hero.querySelector('#px-slide-type').textContent=slide.type;
-  hero.querySelector('#px-slide-stat').textContent=slide.stat;
-  hero.querySelector('#px-slide-dots').innerHTML=promoSlides.map((_,idx)=>`<button type="button" data-slide="${idx}" aria-label="Show slide ${idx+1}" aria-current="${idx===current}"></button>`).join('');
+  hero.querySelector('#px-slide-type').textContent=slide.type||'Workspace';
+  hero.querySelector('#px-slide-stat').textContent=slide.stat||'Your team';
+  hero.querySelector('#px-slide-count').textContent=`${String(current+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
+  const cover=hero.querySelector('#px-slide-cover'),fallback=hero.querySelector('#px-preview-fallback');
+  if(typeof slide.image_url==='string'&&/^https:\/\//i.test(slide.image_url)){
+   cover.src=slide.image_url;cover.style.display='block';fallback.style.display='none';
+  }else{cover.removeAttribute('src');cover.style.display='none';fallback.style.display='block';}
+  hero.querySelector('#px-slide-dots').innerHTML=slides.map((_,idx)=>`<button type="button" data-slide="${idx}" aria-label="Show slide ${idx+1}" aria-current="${idx===current}">${String(idx+1).padStart(2,'0')}</button>`).join('');
  };
- hero.querySelector('#px-slide-prev').onclick=()=>{current=(current+promoSlides.length-1)%promoSlides.length;update();};
- hero.querySelector('#px-slide-next').onclick=()=>{current=(current+1)%promoSlides.length;update();};
- hero.querySelector('#px-slide-dots').onclick=(event)=>{const b=event.target.closest('[data-slide]');if(b){current=Number(b.dataset.slide);update();}};
+ const step=n=>{current=(current+n+slides.length)%slides.length;update()};
+ hero.querySelector('#px-slide-prev').onclick=()=>step(-1);
+ hero.querySelector('#px-slide-next').onclick=()=>step(1);
+ hero.querySelector('#px-slide-dots').onclick=e=>{const b=e.target.closest('[data-slide]');if(b){current=Number(b.dataset.slide);update();}};
  update();
+ // Load public marketing content only; no private work data is fetched here.
+ db.from('login_slides').select('*').limit(3).then(({data,error})=>{
+  if(error||!Array.isArray(data)||!data.length||!hero.isConnected)return;
+  const remote=data.filter(x=>x.enabled).sort((a,b)=>a.position-b.position).map((x,i)=>({
+    tag:x.eyebrow,title:x.headline,detail:x.description,image_url:x.image_url,
+    type:promoSlides[i%promoSlides.length].type,stat:promoSlides[i%promoSlides.length].stat
+  }));
+  if(remote.length){slides=remote;current=Math.min(current,slides.length-1);update();}
+ }).catch(()=>{});
 }
-
 
 // ParroDash: core.mjs
 // ParroDash presentation & planning primitives: pure functions, safe to test without a browser.
@@ -274,6 +338,7 @@ const NAV={
  tasks:{title:'My tasks',icon:'tasks',group:'Workspace'},projects:{title:'Projects',icon:'briefcase',group:'Workspace'},
  calendar:{title:'Holiday calendar',icon:'calendar',group:'Workspace'},
  assistant:{title:'ChatGPT helper',icon:'spark',group:'Workspace'},
+ slider:{title:'Login slider',icon:'settings',group:'Workspace settings',access:'exec'},
  attendance:{title:'Time & attendance',icon:'clock',group:'My workspace'},leave:{title:'Leave requests',icon:'calendar',group:'My workspace'},
  payroll:{title:'Salary X-Ray',icon:'wallet',group:'My workspace'},career:{title:'Career passport',icon:'graduation',group:'My workspace'},
  notes:{title:'Notes & updates',icon:'book',group:'My workspace'},notices:{title:'Notifications',icon:'bell',group:'My workspace'},
@@ -469,11 +534,11 @@ function dataBridge(ctx){const preview=ctx.importPreview||[],valid=preview.filte
 function notes(ctx){const myNotes=rows(ctx,'notes'),announcements=rows(ctx,'announcements');return `<div class="tiles two">${card('Company announcements',`<div class="toolbar"><span class="sub">Updates shared with the workspace</span>${hrR(ctx)?button(`${icon('plus')} Publish`,'notice-new','','sm primary'):''}</div><div class="rows">${announcements.map(a=>`<div class="workload-card"><div class="between"><h3>${esc(a.title)}</h3><small class="muted">${fmtDate(a.created_at)}</small></div><p class="sub" style="margin-top:9px;white-space:pre-wrap">${esc(a.body)}</p></div>`).join('')||empty('Nothing announced','Company messages will appear here.')}</div>`)}${card('My private notes',`<div class="toolbar"><span class="sub">Accessible only to you</span>${button(`${icon('plus')} New note`,'note-new','','sm primary')}</div><div class="notes-grid">${myNotes.map(note=>`<div class="note"><h3>${esc(note.title)}</h3><p>${esc(note.body)}</p><div class="foot"><span>${fmtDate(note.created_at)}</span>${button('Delete','note-delete',note.id,'sm')}</div></div>`).join('')||empty('No private notes','Use notes for your own work.')}</div>`)}</div>`;}
 function audit(ctx){const log=rows(ctx,'audit_events');return `<div class="notice mb">An append-only activity trail records selected sensitive changes and executive approvals. It is not a complete SIEM or legal evidence-retention system.</div>${card('Recent activity',listTable(['Timestamp','Actor','Record','Action'],log.slice(0,100).map(a=>`<tr><td>${fmtTime(a.occurred_at)}</td><td>${esc(nameOf(ctx,a.actor_id))}</td><td>${esc(a.entity)}<br><small>${esc(truncate(a.entity_id,40))}</small></td><td>${badge(a.action)}</td></tr>`).join(''),'No audit entries recorded'))}`;}
 function notices(ctx){const alerts=rows(ctx,'notifications').sort((a,b)=>String(b.created_at).localeCompare(String(a.created_at)));return `${card('My notifications',`<div class="toolbar">${pill(`${alerts.filter(a=>!a.read_at).length} unread`)}${alerts.some(a=>!a.read_at)?btn('Mark all read','notice-all','sm'):''}</div><div class="mini-list">${alerts.map(a=>`<div class="mini-item"><span class="avatar sm">${icon('bell',14)}</span><div class="grow"><strong>${esc(a.title)}</strong><p>${esc(a.body)}</p><small class="muted">${fmtTime(a.created_at)}</small></div>${!a.read_at?button('Mark read','notice-read',a.id,'sm'):badge('done')}</div>`).join('')||empty('No notifications','Approval, leave and follow-up notices will arrive here.')}</div>`)}`;}
-const canView=(ctx,key)=>{const cfg=NAV[key];if(!cfg)return false;return !cfg.access||(cfg.access==='hr'&&hrR(ctx))||(cfg.access==='lead'&&leadR(ctx));};
-const linksFor=(ctx)=>{const allowed=exec(ctx.profile)?['home','inbox','tasks','projects','calendar','people','leave','attendance','notes','notices','assistant']:hr(ctx.profile)?['home','inbox','tasks','projects','calendar','people','leave','attendance','payroll','notes','notices','assistant']:lead(ctx.profile)?['home','tasks','projects','calendar','people','leave','attendance','notes','notices','assistant']:['home','tasks','projects','calendar','leave','attendance','payroll','career','notes','notices','assistant'];return Object.entries(NAV).filter(([key])=>canView(ctx,key)&&allowed.includes(key));};
+const canView=(ctx,key)=>{const cfg=NAV[key];if(!cfg)return false;return !cfg.access||(cfg.access==='hr'&&hrR(ctx))||(cfg.access==='lead'&&leadR(ctx))||(cfg.access==='exec'&&inR(ctx));};
+const linksFor=(ctx)=>Object.entries(NAV).filter(([key])=>canView(ctx,key));
 const viewTitle=(id)=>NAV[id]?.title||'Overview';
 function renderPage(ctx){const page=canView(ctx,ctx.view)?ctx.view:'home';ctx.view=page;
- const mapping={home:simpleOverview,inbox,tasks,projects,calendar:holidayCalendar,assistant:workspaceAssistant,attendance,leave,payroll,career,notes,notices,people,contracts,talent,cases,agent,time:timeMachine,workflows,privacy,policies,import:dataBridge,audit};
+ const mapping={home:simpleOverview,inbox,tasks,projects,calendar:holidayCalendar,assistant:workspaceAssistant,slider:loginSliderSettings,attendance,leave,payroll,career,notes,notices,people,contracts,talent,cases,agent,time:timeMachine,workflows,privacy,policies,import:dataBridge,audit};
  let content;try{content=mapping[page]?.(ctx)||empty('Page unavailable','This view is not ready.')}catch(err){console.error('Render error:',err);content=`<div class="notice danger">This module failed to render: ${esc(err.message)}. Use Refresh to try again.</div>`;}
  const errs=Object.entries(ctx.loadErrors||{});const errorBlock=errs.length?`<div class="notice danger mb"><strong>Could not load ${errs.length} data modules.</strong> ${esc(errs.map(([t,e])=>`${t}: ${e}`).join(' · '))} ${button('Retry','refresh','','sm')}</div>`:'';
  return `${page==='home'?'':mast(ctx,page)}${errorBlock}${content}`;
@@ -543,6 +608,26 @@ function editHoliday(ctx,record=null,suggestion=null){
 }
 
 async function handleAction(ctx,act,element){const id=element?.dataset?.id||'';
+ if(act==='slider-preview'){
+   window.open(location.origin+location.pathname+'?welcome=1','_blank','noopener,noreferrer');return;
+ }
+ if(act==='slider-edit'){
+   if(!exec(ctx.profile))throw Error('Founder / Co-founder access required');
+   const v=ctx.records.login_slides.find(x=>x.position===Number(id));
+   if(!v)throw Error('Slide data not loaded. Try Refresh.');
+   return openModal(ctx,'Edit login slide '+id,
+     field('Small heading','eyebrow',{value:v.eyebrow})+
+     field('Main headline','headline',{value:v.headline})+
+     memo('Description','description',{value:v.description,rows:4})+
+     field('Optional cover image (HTTPS URL)','image_url',{value:v.image_url||'',type:'url',required:false,placeholder:'https://...'}),
+     async f=>{
+       const params={p_position:Number(id),p_eyebrow:String(f.get('eyebrow')||'').trim(),p_headline:String(f.get('headline')||'').trim(),p_description:String(f.get('description')||'').trim(),p_image_url:String(f.get('image_url')||'').trim()||null};
+       const {error}=await ctx.db.rpc('change_login_slide',params);
+       if(error)throw Error(error.message||'Unable to save slide');
+       ctx.toast('Login slide updated.');
+     },{description:'The text on the public login/register slider updates after saving.',submit:'Save slide'});
+ }
+
 
  if(act==='holiday-year-prev'||act==='holiday-year-next'){
    const year=ctx.calendarYear+(act==='holiday-year-prev'?-1:1);
@@ -784,10 +869,10 @@ const db=createClient(API_URL,API_KEY,{auth:{persistSession:true,autoRefreshToke
 const ctx={db,user:null,profile:null,view:'home',records:{},loadErrors:{},calendarYear:new Date().getFullYear(),govtCandidates:[],govtBusy:false,filter:'',taskView:'board',selectedPayroll:null,projectId:null,careerSubject:null,agentPrompt:'',agentSuggestions:[],scenarioDraft:null,importPreview:[],busy:false,menuOpen:false,commandOpen:false,loadToken:0,ownerSetupToken:null};
 const HR=['founder','cofounder','ceo','admin','hr'];
 const TABLES={
- everyone:['profiles','attendance','leave_requests','tasks','projects','notes','announcements','payroll_records','payroll_items','salary_corrections','contracts','career_skills','career_training','career_goals','career_shares','notifications','policy_rules','employee_cases','privacy_requests','opportunities','opportunity_applications','offboarding_steps','task_submissions','company_holidays'],
+ everyone:['profiles','attendance','leave_requests','tasks','projects','notes','announcements','payroll_records','payroll_items','salary_corrections','contracts','career_skills','career_training','career_goals','career_shares','notifications','policy_rules','employee_cases','privacy_requests','opportunities','opportunity_applications','offboarding_steps','task_submissions','company_holidays','login_slides'],
  hr:['invites','audit_events','approval_queue','scenarios','workflow_findings']
 };
-const FALLBACK={profiles:[],attendance:[],leave_requests:[],tasks:[],projects:[],notes:[],announcements:[],payroll_records:[],payroll_items:[],salary_corrections:[],contracts:[],career_skills:[],career_training:[],career_goals:[],career_shares:[],notifications:[],policy_rules:[],employee_cases:[],privacy_requests:[],opportunities:[],opportunity_applications:[],offboarding_steps:[],task_submissions:[],company_holidays:[],invites:[],audit_events:[],approval_queue:[],scenarios:[],workflow_findings:[]};
+const FALLBACK={profiles:[],attendance:[],leave_requests:[],tasks:[],projects:[],notes:[],announcements:[],payroll_records:[],payroll_items:[],salary_corrections:[],contracts:[],career_skills:[],career_training:[],career_goals:[],career_shares:[],notifications:[],policy_rules:[],employee_cases:[],privacy_requests:[],opportunities:[],opportunity_applications:[],offboarding_steps:[],task_submissions:[],company_holidays:[],login_slides:[],invites:[],audit_events:[],approval_queue:[],scenarios:[],workflow_findings:[]};
 ctx.records={...FALLBACK};
 let toastTimer=0;
 ctx.toast=function(message,error=false){const container=document.querySelector('.toast-wrap')||(()=>{const n=document.createElement('div');n.className='toast-wrap';document.body.appendChild(n);return n})();const t=document.createElement('div');t.className='toast '+(error?'error':'success');t.innerHTML=`${icon(error?'alert':'success',17)}<span>${esc(message)}</span>`;container.prepend(t);setTimeout(()=>t.remove(),5500);while(container.children.length>3)container.lastElementChild.remove();};
@@ -800,7 +885,7 @@ ctx.refresh=async function(notify=false){const token=++ctx.loadToken;const names
  ctx.loadErrors=errors;if(notify){ctx.toast(Object.keys(errors).length?'Refresh finished with data errors':'Workspace up to date',!!Object.keys(errors).length)}ctx.render();};
 ctx.render=function(){if(!ctx.profile)return;const links=linksFor(ctx), grouped={};for(const [id,config] of links){(grouped[config.group]??=[]).push([id,config])}
  const unread=ctx.records.notifications?.filter(x=>!x.read_at).length||0;
- const menu=`<aside class="navside" aria-label="Workspace navigation"><div class="nav-top"><span class="brand-symbol">P</span><div class="nav-brand">ParroDash<small>TPARRO WORKSPACE</small></div><button class="nav-collapse" data-act="collapse" title="Close menu" aria-label="Close menu">${icon('menu',17)}</button></div><div class="nav-groups">${Object.entries(grouped).map(([group,sections])=>`<div class="group-label">${esc(group)}</div><nav class="nav">${sections.map(([id,c])=>`<button class="side-link ${ctx.view===id?'active':''}" data-nav="${id}" aria-current="${ctx.view===id?'page':'false'}">${icon(c.icon,16)} <span>${esc(c.title)}</span>${id==='inbox'&&exec(ctx.profile)&&ctx.records.leave_requests?.some(x=>x.status==='pending')?`<b class="count">${ctx.records.leave_requests.filter(x=>x.status==='pending').length}</b>`:id==='notices'&&unread?`<b class="count">${unread}</b>`:''}</button>`).join('')}</nav>`).join('')}</div><div class="nav-footer"><div class="profile-nav">${avatar(ctx.profile.full_name)}<div><strong>${esc(ctx.profile.full_name)}</strong><small>${exec(ctx.profile)?'Founder / CEO':ctx.profile.role==='cofounder'?'Co-founder':ctx.profile.role==='hr'?'HR administrator':ctx.profile.role==='admin'?'System administrator':ctx.profile.role==='manager'?'Manager':'Employee'}</small></div><button type="button" data-act="signout" aria-label="Sign out" title="Sign out">${icon('logout',17)}</button></div></div></aside>`;
+ const menu=`<aside class="navside" aria-label="Workspace navigation"><div class="nav-top"><span class="brand-symbol">P</span><div class="nav-brand">ParroDash<small>TPARRO WORKSPACE</small></div><button class="nav-collapse" data-act="collapse" title="Close menu" aria-label="Close menu">${icon('menu',17)}</button></div><div class="nav-groups">${Object.entries(grouped).map(([group,sections])=>`<div class="group-label">${esc(group)}</div><nav class="nav">${sections.map(([id,c])=>`<button class="side-link ${ctx.view===id?'active':''}" data-nav="${id}" aria-current="${ctx.view===id?'page':'false'}">${icon(c.icon,16)} <span>${esc(c.title)}</span>${id==='inbox'&&exec(ctx.profile)&&ctx.records.leave_requests?.some(x=>x.status==='pending')?`<b class="count">${ctx.records.leave_requests.filter(x=>x.status==='pending').length}</b>`:id==='notices'&&unread?`<b class="count">${unread}</b>`:''}</button>`).join('')}</nav>`).join('')}</div><div class="nav-footer"><div class="profile-nav">${avatar(ctx.profile.full_name)}<div><strong>${esc(ctx.profile.full_name)}</strong><small>${ctx.profile.role==='cofounder'?'Co-founder':exec(ctx.profile)?'Founder / CEO':ctx.profile.role==='hr'?'HR administrator':ctx.profile.role==='admin'?'System administrator':ctx.profile.role==='manager'?'Manager':'Employee'}</small></div><button type="button" data-act="signout" aria-label="Sign out" title="Sign out">${icon('logout',17)}</button></div></div></aside>`;
  root.innerHTML=`<div class="layout ${ctx.menuOpen?'menu-open':''}">${menu}<div class="workarea"><header class="apphead"><button class="iconbtn" data-act="collapse" title="Menu" aria-label="Menu">${icon('menu',19)}</button><div class="crumb"><span>TPARRO</span>${icon('chevron',13)}<strong>${esc(viewTitle(ctx.view))}</strong></div><button class="searchcmd" data-act="command" aria-label="Search and navigate">${icon('search',17)} <span class="search-label">Search anything...</span><kbd class="kbd">⌘ K</kbd></button><button class="header-bell" data-act="goto" data-id="notices" title="My notifications" aria-label="Open notifications">${icon('bell',19)}${unread?'<span class="dot"></span>':''}</button>${avatar(ctx.profile.full_name,'sm')}</header><main class="main" id="main">${renderPage(ctx)}</main></div></div>`;
  if(ctx.commandOpen)openCommand();};
 ctx.showAuth=showAuth;
