@@ -26,9 +26,140 @@
 
 /* ParroDash 2.3 project/task workspace */
 .project-card{display:flex;flex-direction:column;gap:16px;min-height:275px}.project-card .progress{margin-top:-6px}.project-open{background:transparent;border:0;color:inherit;text-align:left;display:block;cursor:pointer;padding:4px 0 8px;width:100%}.project-open h2{font-size:20px;font-weight:680;letter-spacing:-.035em;display:flex;align-items:center;justify-content:space-between;gap:10px}.project-open h2 svg{color:#888;flex-shrink:0}.project-open p{line-height:1.6;margin-top:12px;min-height:42px}.project-open:hover h2,.project-open:focus-visible h2{color:#fff}.project-open:focus-visible{outline:2px solid #fff;outline-offset:5px;border-radius:5px}.project-card>.between:last-child{margin-top:auto}.project-heading{padding:28px}.project-title{font-size:clamp(24px,3vw,34px);font-weight:690;letter-spacing:-.045em;margin:9px 0}.project-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:25px 0;margin:24px 0;border-block:1px solid #333337}.project-stats>div{display:grid;gap:6px}.project-stats strong{font-size:26px;line-height:1.2;font-weight:670}.project-stats span{color:#91919a;font-size:11px}.progress.big{height:9px;margin-top:12px}.project-task-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.task-detail{padding:21px;min-width:0}.task-detail h3{font-size:16px;margin:16px 0;line-height:1.45}.task-detail .person-cell{margin-top:3px}.task-controls{gap:7px;margin-top:14px}.task-controls .btn{display:inline-flex;align-items:center;gap:5px;font-size:11px}.task-controls .btn svg{width:14px;height:14px}.task-controls a{text-decoration:none}.task-controls .badge{align-self:center}.submission-history{border-top:1px solid #333338;margin-top:18px;padding-top:13px;color:#c5c5c9;font-size:12px}.submission-history summary{cursor:pointer;color:#bdbdc4}.submission-entry{border:1px solid #35353b;border-radius:9px;padding:12px;display:grid;gap:8px;overflow-wrap:anywhere}.submission-entry .sub{margin:0}.build-id{font-size:10px;font-weight:650;color:#83838a;white-space:nowrap;margin-left:auto}@media(max-width:1020px){.project-task-grid{grid-template-columns:1fr}}@media(max-width:600px){.project-stats{grid-template-columns:repeat(2,1fr)}.project-heading{padding:17px}.project-task-grid{grid-template-columns:1fr}.build-id{display:none}}
+
+/* TPARRO workspace - focused monochrome experience */
+:root{--bg:#0b0b0e;--sidebar:#101014;--panel:#151519;--panel2:#1b1b20;--hover:#222228;--stroke:#2e2e35;--stroke2:#232329;--radius:12px}
+.navside{width:238px}.nav-top{height:69px;padding-left:17px}.nav-groups{padding-top:14px}.side-link{min-height:39px;font-weight:530;font-size:13px;border-radius:8px}.side-link.active{background:#29292f;box-shadow:inset 2px 0 0 #f5f5f6}.group-label{font-size:9px;letter-spacing:.18em;color:#777782;margin-top:21px}
+.apphead{height:62px}.main{max-width:1550px;margin:auto}.build-id{display:none!important}
+.px-smallcaps{font-size:10px;font-weight:760;letter-spacing:.18em;color:#a3a3ad}
+.px-overview-head,.px-cal-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:22px}
+.px-overview-head h2,.px-cal-heading h2{font-size:26px;letter-spacing:-.05em;line-height:1.22;margin:10px 0 7px}
+.px-overview-head p,.px-cal-heading p,.px-section-head p{font-size:12px;color:#a4a4ad;line-height:1.55}
+.px-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.px-btn{appearance:none;display:inline-flex;align-items:center;justify-content:center;border:1px solid #34343d;border-radius:8px;background:#222227;color:#f0f0f1;min-height:35px;padding:8px 12px;font-size:11.5px;font-weight:660;white-space:nowrap;cursor:pointer}
+.px-btn:hover{background:#303037;border-color:#6d6d74}.px-btn:focus-visible{outline:2px solid #e9e9ed;outline-offset:2px}.px-btn.px-main{background:#f5f5f6;border-color:#f5f5f6;color:#101013}.px-btn.px-main:hover{background:#ceced2}
+.px-card{border:1px solid #2c2c33;border-radius:14px;background:#161619;padding:22px;min-width:0}.px-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-bottom:14px}.px-metric{border:1px solid #2d2d33;background:#17171a;border-radius:12px;padding:19px;display:flex;flex-direction:column;gap:10px}.px-metric span{font-size:12px;color:#aeaeae}.px-metric strong{font-size:30px;font-weight:740;letter-spacing:-.07em;line-height:1}.px-metric small{font-size:11px;color:#898992}.px-overview-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}.px-section-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:19px}.px-section-head h2{font-size:15px;letter-spacing:-.03em}.px-section-head p{margin-top:6px}.px-line{display:flex;align-items:center;gap:12px;padding:13px 0;min-height:65px;border-top:1px solid #2a2a30}.px-line:first-of-type{border-top:0}.px-line>div:nth-of-type(1){flex:1;min-width:0}.px-line strong{font-size:12.5px;display:block;overflow-wrap:anywhere}.px-line small{display:block;font-size:11px;color:#92929c;margin-top:5px;line-height:1.4}.px-dot{width:9px;height:9px;background:#d6d6dc;border-radius:3px;flex:none}.px-status{font-size:10px;font-weight:660;text-transform:capitalize;border:1px solid #414149;color:#b7b7c0;border-radius:7px;padding:5px 8px;white-space:nowrap}.px-status.px-done,.px-status.px-approved{border-color:#266447;color:#73d7a2}.px-status.px-in_progress,.px-status.px-pending{border-color:#786232;color:#ecc576}.px-status.px-rejected{border-color:#783844;color:#ff9a9f}.px-empty{font-size:12px;color:#8d8d96;line-height:1.7;padding:15px 0}.px-upcoming{margin-bottom:32px}.px-holiday-pills{display:flex;flex-wrap:wrap;gap:10px}.px-holiday-chip{padding:12px 15px;border:1px solid #33333a;border-radius:10px;background:#1c1c21;display:flex;gap:8px;align-items:center;font-size:12px}.px-holiday-chip span{color:#a2a2ab}
+.px-yearbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:17px;flex-wrap:wrap}.px-year-controls{display:flex;gap:15px;align-items:center}.px-year-controls strong{font-size:19px;font-weight:760}.px-key{font-size:11px;color:#a1a1aa;display:flex;align-items:center;gap:8px}.px-legend-dot{display:inline-block;width:8px;height:8px;border-radius:3px;background:#f1f1f3}.px-yeargrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:19px}.px-month{border:1px solid #303038;background:#17171b;border-radius:13px;padding:16px}.px-month h3{font-size:13px;margin-bottom:15px;letter-spacing:-.02em}.px-month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:3px;row-gap:6px}.px-weekday{text-align:center;font-size:10px;color:#777781;margin-bottom:5px}.px-day{position:relative;aspect-ratio:1;max-height:37px;display:flex;justify-content:center;align-items:center;font-size:10.5px;border-radius:6px;color:#ccc;min-width:0}.px-day.empty{opacity:0}.px-day.has-holiday{background:#3a3a43;color:#fff;border:1px solid #73737c;font-weight:730}.px-day.has-holiday i{position:absolute;bottom:2px;width:3px;height:3px;background:#fff;border-radius:50%}.px-cal-page>.px-card{margin-bottom:16px}.px-calendar-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:#25252c;font-size:14px;font-weight:750}.px-disclaimer{font-size:11px;line-height:1.75;color:#9797a0;margin:10px 0 18px}.px-disclaimer a{color:#e3e3e8;text-decoration:underline;text-underline-offset:3px}.px-suggestion-list{max-height:380px;overflow:auto}
+.px-assistant{display:grid;grid-template-columns:1.35fr 1fr;gap:14px}.px-ai-composer h2{font-size:25px;margin:12px 0 8px}.px-ai-composer p{font-size:12px;color:#9b9ba6;line-height:1.6;max-width:490px;margin-bottom:26px}.px-ai-composer label{display:block;font-size:12px;font-weight:600;color:#dedee2;margin-bottom:9px}.px-ai-composer textarea{display:block;width:100%;min-height:180px;resize:vertical;margin-bottom:16px}.px-prompt{display:block;width:100%;background:#1c1c20;color:#f0f0f0;border:1px solid #35353d;border-radius:10px;padding:14px;text-align:left;margin-bottom:9px}.px-prompt span{font-size:13px;font-weight:650}.px-prompt small{display:block;font-size:11px;color:#9999a3;line-height:1.55;margin-top:6px}.px-prompt:hover{border-color:#757580;background:#242429}
+.task-resource{display:inline-flex;align-items:center;gap:6px;font-size:11px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#f5f5f6;text-decoration:underline;text-underline-offset:3px}.task-resource:hover{color:#d8d8df}
+.px-auth-hero{padding:43px 52px!important;justify-content:space-between;gap:24px;background:radial-gradient(ellipse at 40% 105%,#26262c 0%,transparent 51%),#151517!important}.px-auth-brand{display:flex;align-items:center;gap:12px}.px-auth-brand strong{font-size:16px;display:block;letter-spacing:-.05em}.px-auth-brand small{display:block;font-size:9px;letter-spacing:.18em;color:#85858c;margin-top:5px}.px-auth-inner{max-width:520px}.px-auth-inner h1{font-size:clamp(33px,4.5vw,66px);line-height:1.03;letter-spacing:-.07em;margin:19px 0}.px-auth-inner>p{font-size:13px;color:#adadb5;line-height:1.7;max-width:390px}.px-auth-preview{margin-top:32px;width:min(100%,470px);border:1px solid #383840;background:#101012;border-radius:15px;box-shadow:0 30px 70px #0006;overflow:hidden}.px-preview-top{height:34px;border-bottom:1px solid #26262c;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:9px;color:#92929b}.px-preview-dots{display:flex;gap:4px}.px-preview-dots i{width:6px;height:6px;background:#4c4c55;border-radius:50%}.px-preview-top b{font-size:9px;background:#242429;border-radius:5px;padding:4px 7px;color:#d9d9e0}.px-preview-body{display:flex;min-height:182px}.px-preview-side{display:flex;flex-direction:column;gap:17px;border-right:1px solid #25252a;width:60px;padding:24px 18px}.px-preview-side i{width:16px;height:9px;background:#3f3f47;border-radius:3px}.px-preview-grid{padding:20px 23px;flex:1;min-width:0}.px-preview-header{display:flex;justify-content:space-between;align-items:center;font-size:11px;margin-bottom:17px}.px-preview-header span{font-size:9px;color:#85858e}.px-preview-row{display:flex;gap:10px;align-items:center;height:23px;border-bottom:1px solid #27272c}.px-preview-row span{width:11px;height:11px;border:1px solid #696971;border-radius:4px}.px-preview-row i{height:5px;width:45%;border-radius:4px;background:#61616a}.px-preview-row b{height:5px;width:20%;border-radius:4px;background:#33333b;margin-left:auto}.px-preview-progress{height:5px;border-radius:3px;background:#33333a;margin-top:16px}.px-preview-progress i{display:block;width:68%;height:100%;border-radius:3px;background:#efeff2}.px-auth-nav{display:flex;justify-content:space-between;align-items:center}.px-auth-dots{display:flex;gap:8px}.px-auth-dots button{width:25px;height:4px;border:0;background:#494951;border-radius:3px;padding:0;cursor:pointer}.px-auth-dots button[aria-current="true"]{background:#ededf1;width:34px}.px-auth-arrows{display:flex;gap:8px}.px-auth-arrows button{height:34px;width:34px;background:#24242a;color:#f1f1f4;border:1px solid #464650;border-radius:9px;cursor:pointer}.px-auth-arrows button:hover{background:#38383f}
+@media(max-width:1150px){.px-yeargrid{grid-template-columns:repeat(2,minmax(0,1fr))}.px-auth-hero{padding:32px!important}}
+@media(max-width:780px){.px-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.px-overview-columns,.px-assistant{grid-template-columns:1fr}.px-overview-head,.px-cal-heading{align-items:flex-start;flex-direction:column}.px-yeargrid{grid-template-columns:repeat(2,minmax(0,1fr))}.px-auth-preview{display:none}.px-auth-hero{gap:18px}.px-auth-inner h1{font-size:35px}.px-auth-inner>p{font-size:12px}}
+@media(max-width:500px){.px-yeargrid,.px-metrics{grid-template-columns:1fr}.px-card{padding:15px}.px-month-grid{row-gap:5px}.px-overview-head h2{font-size:23px}.px-cal-heading h2{font-size:23px}.px-month{padding:14px}.px-auth-hero{min-height:255px!important}.px-auth-inner h1{font-size:29px}.px-auth-inner>p{display:none}.px-auth-nav{margin-top:8px}}
+
 </style></head>
 <body><div id="app"></div>
 <script type="module">import {createClient} from 'https://esm.sh/@supabase/supabase-js@2.95.0';
+const H = (v) => String(v ?? '').replace(/[&<>"']/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
+const rolesExecutive = new Set(['founder','cofounder','ceo']);
+const isExecutive = ctx => rolesExecutive.has(ctx?.profile?.role);
+const nice = (value) => value ? new Date(String(value).slice(0,10)+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}) : 'Not set';
+const state = (s) => `<span class="px-status px-${H(s)}">${H((s||'Unknown').replaceAll('_',' '))}</span>`;
+const action = (title,act,id='',classes='') => `<button class="px-btn ${classes}" type="button" data-act="${H(act)}" data-id="${H(id)}">${H(title)}</button>`;
+const item = (ctx,name)=>ctx.records?.[name] || [];
+const personName = (ctx,id) => item(ctx,'profiles').find(p=>p.id===id)?.full_name || 'Team member';
+
+function simpleOverview(ctx){
+ const executive=isExecutive(ctx), allTasks=item(ctx,'tasks'), mine=allTasks.filter(t=>t.assigned_to===ctx.user?.id), pendingLeaves=item(ctx,'leave_requests').filter(l=>l.status==='pending'), members=item(ctx,'profiles').filter(p=>p.active&&p.onboarded_at), projects=item(ctx,'projects');
+ const companyHolidays=item(ctx,'company_holidays').filter(h=>h.status==='published'&&h.end_on>=new Date().toISOString().slice(0,10)).sort((a,b)=>a.start_on.localeCompare(b.start_on));
+ const waiting=item(ctx,'profiles').filter(p=>p.signup_method==='self'&&p.registration_status==='pending'&&!p.active);
+ const open=allTasks.filter(t=>t.status!=='done').length;
+ const metrics=executive?[
+  ['Employees',members.length,'Active members'],['Tasks in progress',open,'Across your workspace'],['Pending leave',pendingLeaves.length,'Needs a decision']
+ ]:[['My tasks',mine.filter(t=>t.status!=='done').length,'Open assignments'],['Completed',mine.filter(t=>t.status==='done').length,'Approved work'],['Upcoming holidays',companyHolidays.length,'Company-approved']];
+ const visibleTasks=(executive?allTasks:mine).filter(t=>t.status!=='done').sort((a,b)=>String(a.due_date||'9999').localeCompare(String(b.due_date||'9999'))).slice(0,6);
+ const mainLeft=executive?`<div class="px-section-head"><h2>Needs attention</h2>${action('All approvals','goto','inbox')}</div>
+   ${[...waiting.slice(0,3).map(p=>({title:p.full_name+' requested access',subtitle:'Identity verification required',button:'Review',act:'goto',id:'people'})),...pendingLeaves.slice(0,4).map(l=>({title:personName(ctx,l.user_id)+' requested leave',subtitle:nice(l.start_date)+' to '+nice(l.end_date),button:'Review',act:'goto',id:'inbox'}))].map(x=>`<div class="px-line"><span class="px-dot"></span><div><strong>${H(x.title)}</strong><small>${H(x.subtitle)}</small></div>${action(x.button,x.act,x.id)}</div>`).join('')||'<p class="px-empty">Everything is up to date. No approvals waiting.</p>'}`:
+  `<div class="px-section-head"><h2>My next tasks</h2>${action('All tasks','goto','tasks')}</div>${visibleTasks.map(t=>`<div class="px-line"><span class="px-dot"></span><div><strong>${H(t.title)}</strong><small>${H(t.priority)} priority / ${nice(t.due_date)}</small></div>${state(t.status)}</div>`).join('')||'<p class="px-empty">No tasks assigned to you yet.</p>'}`;
+ const tasksRight=executive?`<div class="px-section-head"><h2>Current tasks</h2>${action('View all','goto','tasks')}</div>${visibleTasks.map(t=>`<div class="px-line"><span class="px-dot"></span><div><strong>${H(t.title)}</strong><small>${H(personName(ctx,t.assigned_to))} / Due ${nice(t.due_date)}</small></div>${state(t.status)}</div>`).join('')||'<p class="px-empty">Create the first project or task for your team.</p>'}`:
+  `<div class="px-section-head"><h2>Time off</h2>${action('Request leave','leave-new')}</div><p class="px-empty">Check company holidays and submit a leave request whenever you need time away.</p>`;
+ return `<div class="px-overview"><div class="px-overview-head"><div><div class="px-smallcaps">WORKSPACE OVERVIEW</div><h2>${executive?'Your team, in sync.':'Your work, at a glance.'}</h2><p>Projects, people and decisions - without the clutter.</p></div><div class="px-actions">${executive?action('Invite employee','goto','people'):''}${executive?action('New task','task-new'):''}${action('Open calendar','goto','calendar','px-main')}</div></div>
+ <div class="px-metrics">${metrics.map(m=>`<div class="px-metric"><span>${H(m[0])}</span><strong>${H(m[1])}</strong><small>${H(m[2])}</small></div>`).join('')}</div>
+ <div class="px-overview-columns"><section class="px-card">${mainLeft}</section><section class="px-card">${tasksRight}</section></div>
+ <section class="px-card px-upcoming"><div class="px-section-head"><h2>Next company holidays</h2>${action('Yearly calendar','goto','calendar')}</div><div class="px-holiday-pills">${companyHolidays.slice(0,5).map(h=>`<div class="px-holiday-chip"><strong>${nice(h.start_on)}</strong><span>${H(h.name)}</span></div>`).join('')||'<p class="px-empty">No company holidays published yet.</p>'}</div></section></div>`;
+}
+
+function monthCard(year,month,byDay){
+ const first=(new Date(Date.UTC(year,month,1)).getUTCDay()+6)%7;
+ const days=new Date(Date.UTC(year,month+1,0)).getUTCDate();
+ const cells=[...Array(first)].map(()=>'<div class="px-day empty"></div>');
+ for(let d=1;d<=days;d++){
+  const date=`${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+  const holidays=byDay[date]||[];
+  const classes=['px-day'];if(holidays.length)classes.push('has-holiday');
+  cells.push(`<div class="${classes.join(' ')}" title="${H(holidays.map(h=>h.name).join(', '))}"><span>${d}</span>${holidays.length?'<i aria-label="Company holiday"></i>':''}</div>`);
+ }
+ return `<section class="px-month"><h3>${new Date(Date.UTC(year,month,1)).toLocaleDateString('en-GB',{month:'long',timeZone:'UTC'})}</h3><div class="px-month-grid">${['M','T','W','T','F','S','S'].map(d=>`<div class="px-weekday">${d}</div>`).join('')}${cells.join('')}</div></section>`;
+}
+
+function holidayCalendar(ctx){
+ const year=ctx.calendarYear || new Date().getFullYear();
+ const list=item(ctx,'company_holidays').filter(h=>Number(h.start_on.slice(0,4))<=year&&Number(h.end_on.slice(0,4))>=year).sort((a,b)=>a.start_on.localeCompare(b.start_on));
+ const byDay={}; for(const h of list){let date=new Date(h.start_on+'T12:00:00Z'),end=new Date(h.end_on+'T12:00:00Z'),steps=0;
+   while(date<=end&&steps<32){const key=date.toISOString().slice(0,10);(byDay[key]??=[]).push(h);date.setUTCDate(date.getUTCDate()+1);steps++;}}
+ const executive=isExecutive(ctx),candidates=ctx.govtCandidates||[];
+ const sourceUrl=year===2027?'https://mopa.gov.bd/pages/public-holiday':'https://mopa.gov.bd/pages/public-holiday?archived=true';
+ return `<div class="px-cal-page">
+  <div class="px-cal-heading"><div><h2>Company holiday calendar</h2><p>Only published company holidays are visible to employees. Government dates are reference suggestions.</p></div>${executive?action('Add company holiday','holiday-add','','px-main'):''}</div>
+  <div class="px-yearbar"><div class="px-year-controls">${action('Previous','holiday-year-prev')}<strong>${year}</strong>${action('Next','holiday-year-next')}</div><div class="px-key"><i class="px-legend-dot"></i> Published company holiday</div></div>
+  <div class="px-yeargrid">${Array.from({length:12},(_,m)=>monthCard(year,m,byDay)).join('')}</div>
+  <section class="px-card"><div class="px-section-head"><h2>Published dates</h2>${executive?action('Add a date','holiday-add'):''}</div>${list.map(h=>`<div class="px-line"><span class="px-calendar-icon">${H(new Date(h.start_on+'T12:00:00Z').getUTCDate())}</span><div><strong>${H(h.name)}</strong><small>${nice(h.start_on)}${h.end_on!==h.start_on?' - '+nice(h.end_on):''}${h.note?' / '+H(h.note):''}</small></div>${executive?action('Edit','holiday-edit',h.id):''}${executive?action('Remove','holiday-delete',h.id):''}</div>`).join('')||'<p class="px-empty">No holidays published for this year yet.</p>'}</section>
+  ${executive?`<section class="px-card"><div class="px-section-head"><div><h2>Bangladesh government holidays - suggestions</h2><p>Reference only, not automatic days off. Verify dates against the government gazette before publishing.</p></div>${action(ctx.govtBusy?'Loading...':'Load suggestions','holiday-fetch')}</div>
+  <p class="px-disclaimer">The free holiday feed may omit Eid, religious observances or executive-order dates. For complete dates, use the <a href="${sourceUrl}" target="_blank" rel="noopener noreferrer">Ministry of Public Administration holiday notice</a>.</p>
+  ${candidates.length?`<div class="px-suggestion-list">${candidates.map((h,i)=>`<div class="px-line"><div><strong>${H(h.localName||h.name)}</strong><small>${nice(h.date)} / Suggested government date</small></div>${action('Publish for team','holiday-adopt',i)}</div>`).join('')}</div>`:'<p class="px-empty">Load suggestions for the selected year. Nothing will be published until you choose it.</p>'}</section>`:''}
+  </div>`;
+}
+
+async function governmentSuggestions(year){
+ const y=Number(year);if(!Number.isInteger(y)||y<2025||y>2035)throw new Error('Choose a valid calendar year');
+ const response=await fetch(`https://date.nager.at/api/v3/PublicHolidays/${y}/BD`,{headers:{'Accept':'application/json'}});
+ if(!response.ok)throw new Error('Government reference feed is unavailable. Use the Ministry notice link to add dates manually.');
+ const data=await response.json();
+ if(!Array.isArray(data))throw new Error('Holiday source returned an unexpected response');
+ return data.filter(v=>typeof v.date==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v.date)).map(v=>({date:v.date,name:String(v.name||''),localName:String(v.localName||v.name||'Holiday')})).slice(0,100);
+}
+
+const promptSet=[
+ ['Task brief','Create a clear project task brief with scope, acceptance criteria, deliverables, due dates and review checkpoints. Use placeholders for any missing facts.'],
+ ['Employee announcement','Write a concise, respectful company announcement. Keep the language professional and easy to understand.'],
+ ['Project plan','Help me prepare a project plan with milestones, task ownership, risks and a weekly review cadence.'],
+ ['Leave planning','Help me plan company leave coverage around approved holidays, without using private employee records.']
+];
+function workspaceAssistant(ctx){
+ return `<div class="px-assistant"><section class="px-card px-ai-composer"><div class="px-smallcaps">CHATGPT WORKSPACE</div><h2>Get help with your work.</h2><p>Ask ChatGPT to help write, plan and organize. Your ParroDash records are not shared automatically.</p><label for="px-ai-text">What do you need help with?</label><textarea class="input" id="px-ai-text" rows="7" placeholder="Write a project brief, plan a team meeting, draft an announcement..."></textarea><div class="px-actions">${action('Copy prompt','assistant-copy')}${action('Continue in ChatGPT','assistant-open','','px-main')}</div></section>
+ <section class="px-card"><div class="px-section-head"><h2>Start with a template</h2></div>${promptSet.map((x,i)=>`<button class="px-prompt" type="button" data-act="assistant-template" data-id="${i}"><span>${H(x[0])}</span><small>${H(x[1])}</small></button>`).join('')}<p class="px-disclaimer">This opens your ChatGPT account in a separate tab, not an embedded assistant. Native in-app AI would require a separately authorized provider integration.</p></section></div>`;
+}
+const assistantPrompts=promptSet.map(p=>p[1]);
+
+const promoSlides=[
+ {tag:'WORK, SIMPLIFIED',title:'One calm place for every project.',detail:'See what matters, assign work and keep your team in sync.',type:'Tasks',stat:'In progress'},
+ {tag:'PEOPLE FIRST',title:'Your team. Clear priorities.',detail:'Approvals, availability and schedules without the noise.',type:'People',stat:'Team connected'},
+ {tag:'TIME, WELL PLANNED',title:'Every day, accounted for.',detail:'Company holidays and time-off requests in one calendar.',type:'Calendar',stat:'Stay ahead'}
+];
+function paintAuthHero(hero){
+ if(!hero)return;
+ hero.classList.add('px-auth-hero');
+ hero.innerHTML=`<div class="px-auth-brand"><span class="brand-symbol">P</span><div><strong>ParroDash</strong><small>TPARRO WORKSPACE</small></div></div>
+ <div class="px-auth-inner"><div class="px-smallcaps" id="px-slide-tag"></div><h1 id="px-slide-title"></h1><p id="px-slide-detail"></p>
+ <div class="px-auth-preview"><div class="px-preview-top"><span class="px-preview-dots"><i></i><i></i><i></i></span><span>TPARRO / Workspace</span><b id="px-slide-type">Tasks</b></div><div class="px-preview-body"><div class="px-preview-side"><i></i><i></i><i></i><i></i></div><div class="px-preview-grid"><div class="px-preview-header"><strong id="px-slide-stat"></strong><span>Workspace</span></div><div class="px-preview-row"><span></span><i></i><b></b></div><div class="px-preview-row"><span></span><i></i><b></b></div><div class="px-preview-row"><span></span><i></i><b></b></div><div class="px-preview-progress"><i></i></div></div></div></div></div>
+ <div class="px-auth-nav"><div class="px-auth-dots" id="px-slide-dots"></div><div class="px-auth-arrows"><button type="button" id="px-slide-prev" aria-label="Previous slide">&#8592;</button><button type="button" id="px-slide-next" aria-label="Next slide">&#8594;</button></div></div>`;
+ let current=0;
+ const update=()=>{
+  if(!hero.isConnected)return;
+  const slide=promoSlides[current];
+  hero.querySelector('#px-slide-tag').textContent=slide.tag;
+  hero.querySelector('#px-slide-title').textContent=slide.title;
+  hero.querySelector('#px-slide-detail').textContent=slide.detail;
+  hero.querySelector('#px-slide-type').textContent=slide.type;
+  hero.querySelector('#px-slide-stat').textContent=slide.stat;
+  hero.querySelector('#px-slide-dots').innerHTML=promoSlides.map((_,idx)=>`<button type="button" data-slide="${idx}" aria-label="Show slide ${idx+1}" aria-current="${idx===current}"></button>`).join('');
+ };
+ hero.querySelector('#px-slide-prev').onclick=()=>{current=(current+promoSlides.length-1)%promoSlides.length;update();};
+ hero.querySelector('#px-slide-next').onclick=()=>{current=(current+1)%promoSlides.length;update();};
+ hero.querySelector('#px-slide-dots').onclick=(event)=>{const b=event.target.closest('[data-slide]');if(b){current=Number(b.dataset.slide);update();}};
+ update();
+}
+
 
 // ParroDash: core.mjs
 // ParroDash presentation & planning primitives: pure functions, safe to test without a browser.
@@ -37,8 +168,8 @@ const API_KEY='sb_publishable_ZO1WFA4VkEzWdf0qnFCE1A_Krr4VRMk';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const n=value=>Number.isFinite(+value)?+value:0;
 const initials=name=>String(name||'U').trim().split(/\s+/).slice(0,2).map(x=>x[0]?.toUpperCase()||'').join('');
-const exec=p=>['founder','ceo'].includes(p?.role);
-const hr=p=>['founder','ceo','admin','hr'].includes(p?.role);
+const exec=p=>['founder','cofounder','ceo'].includes(p?.role);
+const hr=p=>['founder','cofounder','ceo','admin','hr'].includes(p?.role);
 const lead=p=>hr(p)||p?.role==='manager';
 const fmtDate=d=>{if(!d)return '—';const date=new Date(String(d).length===10?`${d}T12:00:00Z`:d);return Number.isNaN(+date)?'—':date.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'Asia/Dhaka'});};
 const fmtTime=d=>{if(!d)return '—';const date=new Date(d);return Number.isNaN(+date)?'—':date.toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',timeZone:'Asia/Dhaka'});};
@@ -141,6 +272,8 @@ const truncate=(x,len=125)=>String(x||'').length>len?String(x).slice(0,len)+'…
 const NAV={
  home:{title:'Overview',icon:'home',group:'Workspace'},inbox:{title:'Approval inbox',icon:'inbox',group:'Workspace',access:'hr'},
  tasks:{title:'My tasks',icon:'tasks',group:'Workspace'},projects:{title:'Projects',icon:'briefcase',group:'Workspace'},
+ calendar:{title:'Holiday calendar',icon:'calendar',group:'Workspace'},
+ assistant:{title:'ChatGPT helper',icon:'spark',group:'Workspace'},
  attendance:{title:'Time & attendance',icon:'clock',group:'My workspace'},leave:{title:'Leave requests',icon:'calendar',group:'My workspace'},
  payroll:{title:'Salary X-Ray',icon:'wallet',group:'My workspace'},career:{title:'Career passport',icon:'graduation',group:'My workspace'},
  notes:{title:'Notes & updates',icon:'book',group:'My workspace'},notices:{title:'Notifications',icon:'bell',group:'My workspace'},
@@ -247,6 +380,8 @@ function taskControls(ctx,t){
  const latest=submissions[0];const pending=submissions.find(x=>x.status==='submitted');
  const ownTask=t.assigned_to===ctx.user.id;
  return `<div class="task-controls flex wrap">
+  ${t.resource_url?`<a class="task-resource" target="_blank" rel="noopener noreferrer" href="${esc(t.resource_url)}">${icon('file',15)} ${esc(t.resource_label||'Task resources')}</a>`:''}
+  ${leadR(ctx)?button('Edit resources','task-resource',t.id,'sm'):''}
   ${ownTask&&t.status!=='done'&&!pending?button(`${icon('upload')} Submit work`,'task-submit',t.id,'sm primary'):''}
   ${ownTask&&pending?'<span class="badge warn">Work awaiting review</span>':''}
   ${leadR(ctx)?button(`${icon('users')} Assign`,'task-reassign',t.id,'sm'):''}
@@ -335,13 +470,13 @@ function notes(ctx){const myNotes=rows(ctx,'notes'),announcements=rows(ctx,'anno
 function audit(ctx){const log=rows(ctx,'audit_events');return `<div class="notice mb">An append-only activity trail records selected sensitive changes and executive approvals. It is not a complete SIEM or legal evidence-retention system.</div>${card('Recent activity',listTable(['Timestamp','Actor','Record','Action'],log.slice(0,100).map(a=>`<tr><td>${fmtTime(a.occurred_at)}</td><td>${esc(nameOf(ctx,a.actor_id))}</td><td>${esc(a.entity)}<br><small>${esc(truncate(a.entity_id,40))}</small></td><td>${badge(a.action)}</td></tr>`).join(''),'No audit entries recorded'))}`;}
 function notices(ctx){const alerts=rows(ctx,'notifications').sort((a,b)=>String(b.created_at).localeCompare(String(a.created_at)));return `${card('My notifications',`<div class="toolbar">${pill(`${alerts.filter(a=>!a.read_at).length} unread`)}${alerts.some(a=>!a.read_at)?btn('Mark all read','notice-all','sm'):''}</div><div class="mini-list">${alerts.map(a=>`<div class="mini-item"><span class="avatar sm">${icon('bell',14)}</span><div class="grow"><strong>${esc(a.title)}</strong><p>${esc(a.body)}</p><small class="muted">${fmtTime(a.created_at)}</small></div>${!a.read_at?button('Mark read','notice-read',a.id,'sm'):badge('done')}</div>`).join('')||empty('No notifications','Approval, leave and follow-up notices will arrive here.')}</div>`)}`;}
 const canView=(ctx,key)=>{const cfg=NAV[key];if(!cfg)return false;return !cfg.access||(cfg.access==='hr'&&hrR(ctx))||(cfg.access==='lead'&&leadR(ctx));};
-const linksFor=(ctx)=>Object.entries(NAV).filter(([key])=>canView(ctx,key));
+const linksFor=(ctx)=>{const allowed=exec(ctx.profile)?['home','inbox','tasks','projects','calendar','people','leave','attendance','notes','notices','assistant']:hr(ctx.profile)?['home','inbox','tasks','projects','calendar','people','leave','attendance','payroll','notes','notices','assistant']:lead(ctx.profile)?['home','tasks','projects','calendar','people','leave','attendance','notes','notices','assistant']:['home','tasks','projects','calendar','leave','attendance','payroll','career','notes','notices','assistant'];return Object.entries(NAV).filter(([key])=>canView(ctx,key)&&allowed.includes(key));};
 const viewTitle=(id)=>NAV[id]?.title||'Overview';
 function renderPage(ctx){const page=canView(ctx,ctx.view)?ctx.view:'home';ctx.view=page;
- const mapping={home:dashboard,inbox,tasks,projects,attendance,leave,payroll,career,notes,notices,people,contracts,talent,cases,agent,time:timeMachine,workflows,privacy,policies,import:dataBridge,audit};
+ const mapping={home:simpleOverview,inbox,tasks,projects,calendar:holidayCalendar,assistant:workspaceAssistant,attendance,leave,payroll,career,notes,notices,people,contracts,talent,cases,agent,time:timeMachine,workflows,privacy,policies,import:dataBridge,audit};
  let content;try{content=mapping[page]?.(ctx)||empty('Page unavailable','This view is not ready.')}catch(err){console.error('Render error:',err);content=`<div class="notice danger">This module failed to render: ${esc(err.message)}. Use Refresh to try again.</div>`;}
  const errs=Object.entries(ctx.loadErrors||{});const errorBlock=errs.length?`<div class="notice danger mb"><strong>Could not load ${errs.length} data modules.</strong> ${esc(errs.map(([t,e])=>`${t}: ${e}`).join(' · '))} ${button('Retry','refresh','','sm')}</div>`:'';
- return `${mast(ctx,page)}${errorBlock}${content}`;
+ return `${page==='home'?'':mast(ctx,page)}${errorBlock}${content}`;
 }
 
 // ParroDash: actions.js
@@ -352,7 +487,7 @@ const field=(label,name,{value='',type='text',required=true,placeholder='',min='
 const memo=(label,name,{value='',placeholder='',rows=4,required=true}={})=>`<div class="field"><label>${esc(label)}</label><textarea class="input" name="${esc(name)}" placeholder="${esc(placeholder)}" rows="${rows}" ${required?'required':''}>${esc(value)}</textarea></div>`;
 const pick=(label,name,options,selected='')=>`<div class="field"><label>${esc(label)}</label><select class="input" name="${esc(name)}" required>${options.map(([id,text])=>`<option value="${esc(id)}" ${String(id)===String(selected)?'selected':''}>${esc(text)}</option>`).join('')}</select></div>`;
 const bool=(label,name,checked=false)=>`<label class="checkrow"><input type="checkbox" name="${esc(name)}" ${checked?'checked':''}>${esc(label)}</label>`;
-const roles=[['employee','Employee'],['manager','Manager'],['hr','HR administrator'],['admin','System administrator'],['ceo','CEO'],['founder','Founder']];
+const roles=[['employee','Employee'],['manager','Manager'],['hr','HR administrator'],['admin','System administrator'],['cofounder','Co-founder'],['ceo','CEO'],['founder','Founder']];
 const asNull=(x)=>x?String(x):null;
 const asNum=(f,k)=>n(f.get(k));
 async function insert(ctx,table,value,returning=false){let q=ctx.db.from(table).insert(value);if(returning)q=q.select('*').single();const r=await q;if(r.error)throw Error(r.error.message);return r.data;}
@@ -387,7 +522,72 @@ async function generateInvite(ctx,data){const res=await ctx.db.functions.invoke(
 function download(filename,text,type='text/plain'){const blob=new Blob([text],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);}
 const confirmAction=message=>window.confirm(message);
 
+
+function editHoliday(ctx,record=null,suggestion=null){
+ if(!exec(ctx.profile))throw Error('Only Founder, Co-founder or CEO can manage holidays');
+ const date=record?.start_on||suggestion?.date||dateInput();
+ return openModal(ctx,record?'Edit company holiday':'Publish company holiday',
+   field('Holiday name','name',{value:record?.name||suggestion?.localName||suggestion?.name||'',placeholder:'Holiday title'})+
+   `<div class="formgrid">${field('Start date','start_on',{type:'date',value:date})}${field('End date','end_on',{type:'date',value:record?.end_on||date})}</div>`+
+   memo('Note (optional)','note',{value:record?.note||'',required:false,placeholder:'Office policy, half-day note, etc.'}),
+   async f=>{
+     const start=String(f.get('start_on')),end=String(f.get('end_on'));
+     if(end<start)throw Error('End must not be before start');
+     const days=Math.round((Date.parse(end)-Date.parse(start))/86400000)+1;
+     if(days>30)throw Error('Create separate holiday entries for periods longer than 30 days');
+     const values={name:String(f.get('name')||'').trim(),start_on:start,end_on:end,note:String(f.get('note')||'').trim()};
+     if(record){await update(ctx,'company_holidays',values,record.id)}
+     else{await insert(ctx,'company_holidays',{...values,origin:suggestion?'government_reference':'company',source_url:suggestion?'https://mopa.gov.bd/pages/public-holiday':'',status:'published',created_by:ctx.user.id,published_by:ctx.user.id,published_at:new Date().toISOString()})}
+     ctx.toast(record?'Holiday updated':'Holiday published for employees');
+   },{description:'Published dates appear in every employee calendar.',submit:record?'Save holiday':'Publish holiday'});
+}
+
 async function handleAction(ctx,act,element){const id=element?.dataset?.id||'';
+
+ if(act==='holiday-year-prev'||act==='holiday-year-next'){
+   const year=ctx.calendarYear+(act==='holiday-year-prev'?-1:1);
+   if(year<2025||year>2035)return ctx.toast('Choose a year between 2025 and 2035',true);
+   ctx.calendarYear=year;ctx.govtCandidates=[];ctx.render();return;
+ }
+ if(act==='task-resource'){
+   if(!lead(ctx.profile))throw Error('Only managers can edit task resources');
+   const task=ctx.records.tasks.find(t=>t.id===id);
+   if(!task)throw Error('Task not found');
+   return openModal(ctx,'Task resource link',field('Resource URL','resource_url',{type:'url',value:task.resource_url||'',required:false,placeholder:'https://drive.google.com/...'})+
+     field('Resource label','resource_label',{value:task.resource_label||'',required:false,placeholder:'Assets / Brief / Reference'}),async f=>{
+      const url=String(f.get('resource_url')||'').trim()||null;
+      const {error}=await ctx.db.rpc('set_task_resource',{p_task:id,p_url:url,p_label:String(f.get('resource_label')||'').trim()});
+      if(error)throw Error(error.message);ctx.toast('Task resource updated');
+     },{submit:'Save resource'});
+ }
+ if(act==='holiday-add')return editHoliday(ctx);
+ if(act==='holiday-edit')return editHoliday(ctx,ctx.records.company_holidays.find(h=>h.id===id));
+ if(act==='holiday-adopt'){
+   const suggest=ctx.govtCandidates[Number(id)];if(!suggest)throw Error('Reference date not found');
+   return editHoliday(ctx,null,suggest);
+ }
+ if(act==='holiday-delete')return guarded(ctx,async()=>{
+   if(!exec(ctx.profile))throw Error('Only Founder, Co-founder or CEO can remove holidays');
+   const existing=ctx.records.company_holidays.find(h=>h.id===id);
+   if(!existing||!confirmAction('Remove '+existing.name+' from employee calendars?'))return;
+   const {error}=await ctx.db.from('company_holidays').delete().eq('id',id);
+   if(error)throw Error(error.message);await touch(ctx,'Company holiday removed');
+ });
+ if(act==='holiday-fetch')return guarded(ctx,async()=>{
+   ctx.govtBusy=true;
+   try{ctx.govtCandidates=await governmentSuggestions(ctx.calendarYear);ctx.toast('Government reference dates loaded. Verify the ministry notice before publishing.');ctx.render()}
+   finally{ctx.govtBusy=false;}
+ });
+ if(act==='assistant-template'){
+   const field=document.getElementById('px-ai-text');if(field){field.value=assistantPrompts[Number(id)]||'';field.focus();}return;
+ }
+ if(act==='assistant-open'||act==='assistant-copy'){
+   const text=String(document.getElementById('px-ai-text')?.value||'').trim();
+   if(!text)return ctx.toast('Write a prompt or select a template first',true);
+   if(act==='assistant-copy')return navigator.clipboard?.writeText(text).then(()=>ctx.toast('Prompt copied'),()=>ctx.toast('Clipboard permission denied',true));
+   window.open('https://chatgpt.com/?q='+encodeURIComponent(text.slice(0,4000)),'_blank','noopener,noreferrer');return;
+ }
+
  if(act==='refresh')return ctx.refresh(true);
  if(act==='goto'||act==='nav-inbox')return ctx.goto(act==='nav-inbox'?'inbox':id);
  if(act==='project-open'){if(!ctx.records.projects.some(p=>p.id===id))throw Error('Project is not available to your account');ctx.projectId=id;ctx.goto('projects');return}
@@ -453,7 +653,7 @@ async function handleAction(ctx,act,element){const id=element?.dataset?.id||'';
   {description:'Invite a team member with Employee-only permissions',submit:'Generate employee invitation'});
  if(act==='invite-issue')return guarded(ctx,async()=>{const result=await generateInvite(ctx,{action:'issue_existing',email:id});await ctx.refresh();openLinkDialog(ctx,result.email,result.url)});
  if(act==='invite-recover')return guarded(ctx,async()=>{if(!confirmAction('Generate a new recovery link for this employee? This immediately invalidates any previous recovery token. Send it only to the account owner over a trusted channel.'))return;const result=await generateInvite(ctx,{action:'recover_active',email:id});openLinkDialog(ctx,result.email,result.url)});
- if(act==='quick-task'||act==='task-new')return openModal(ctx,'Create task',field('Task title','title',{placeholder:'What needs to be done?'})+`<div class="formgrid">${pick('Assign to','assigned_to',memberOptions(ctx))}${pick('Project','project_id',[['','General'],...ctx.records.projects.map(p=>[p.id,p.name])],ctx.projectId||'')}${pick('Priority','priority',['Normal','Low','High','Urgent'].map(x=>[x,x]))}${field('Estimated hours','estimate_hours',{type:'number',value:2,min:0,max:999,step:.5})}</div>`+field('Due date','due_date',{type:'date',required:false}),async f=>{await insert(ctx,'tasks',{title:String(f.get('title')).trim(),assigned_to:f.get('assigned_to'),project_id:asNull(f.get('project_id')),created_by:ctx.user.id,priority:f.get('priority'),estimate_hours:asNum(f,'estimate_hours'),due_date:asNull(f.get('due_date'))});ctx.toast('Task created')},{description:'Tasks are assigned only to active team members'});
+ if(act==='quick-task'||act==='task-new')return openModal(ctx,'Create task',field('Task title','title',{placeholder:'What needs to be done?'})+`<div class="formgrid">${pick('Assign to','assigned_to',memberOptions(ctx))}${pick('Project','project_id',[['','General'],...ctx.records.projects.map(p=>[p.id,p.name])],ctx.projectId||'')}${pick('Priority','priority',['Normal','Low','High','Urgent'].map(x=>[x,x]))}${field('Estimated hours','estimate_hours',{type:'number',value:2,min:0,max:999,step:.5})}</div>`+field('Due date','due_date',{type:'date',required:false})+field('Resource link (Drive, Figma or document)','resource_url',{type:'url',required:false,placeholder:'https://drive.google.com/...'})+field('Link label','resource_label',{required:false,placeholder:'Design brief / Assets'}),async f=>{await insert(ctx,'tasks',{title:String(f.get('title')).trim(),assigned_to:f.get('assigned_to'),project_id:asNull(f.get('project_id')),created_by:ctx.user.id,priority:f.get('priority'),estimate_hours:asNum(f,'estimate_hours'),due_date:asNull(f.get('due_date')),resource_url:asNull(f.get('resource_url')),resource_label:String(f.get('resource_label')||'').trim()});ctx.toast('Task created')},{description:'Tasks are assigned only to active team members'});
  if(act==='project-new')return openModal(ctx,'Create project',field('Project name','name')+memo('Description','description',{required:false}),async f=>{await insert(ctx,'projects',{name:String(f.get('name')).trim(),description:String(f.get('description')||''),created_by:ctx.user.id});ctx.toast('Project created')});
  if(act==='project-manage'){
   const p=ctx.records.projects.find(x=>x.id===id);if(!p)return ctx.toast('Project not found',true);
@@ -581,13 +781,13 @@ async function handleForm(ctx,form){
 // ParroDash: app.js
 const root=document.getElementById('app');
 const db=createClient(API_URL,API_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
-const ctx={db,user:null,profile:null,view:'home',records:{},loadErrors:{},filter:'',taskView:'board',selectedPayroll:null,projectId:null,careerSubject:null,agentPrompt:'',agentSuggestions:[],scenarioDraft:null,importPreview:[],busy:false,menuOpen:false,commandOpen:false,loadToken:0,ownerSetupToken:null};
-const HR=['founder','ceo','admin','hr'];
+const ctx={db,user:null,profile:null,view:'home',records:{},loadErrors:{},calendarYear:new Date().getFullYear(),govtCandidates:[],govtBusy:false,filter:'',taskView:'board',selectedPayroll:null,projectId:null,careerSubject:null,agentPrompt:'',agentSuggestions:[],scenarioDraft:null,importPreview:[],busy:false,menuOpen:false,commandOpen:false,loadToken:0,ownerSetupToken:null};
+const HR=['founder','cofounder','ceo','admin','hr'];
 const TABLES={
- everyone:['profiles','attendance','leave_requests','tasks','projects','notes','announcements','payroll_records','payroll_items','salary_corrections','contracts','career_skills','career_training','career_goals','career_shares','notifications','policy_rules','employee_cases','privacy_requests','opportunities','opportunity_applications','offboarding_steps','task_submissions'],
+ everyone:['profiles','attendance','leave_requests','tasks','projects','notes','announcements','payroll_records','payroll_items','salary_corrections','contracts','career_skills','career_training','career_goals','career_shares','notifications','policy_rules','employee_cases','privacy_requests','opportunities','opportunity_applications','offboarding_steps','task_submissions','company_holidays'],
  hr:['invites','audit_events','approval_queue','scenarios','workflow_findings']
 };
-const FALLBACK={profiles:[],attendance:[],leave_requests:[],tasks:[],projects:[],notes:[],announcements:[],payroll_records:[],payroll_items:[],salary_corrections:[],contracts:[],career_skills:[],career_training:[],career_goals:[],career_shares:[],notifications:[],policy_rules:[],employee_cases:[],privacy_requests:[],opportunities:[],opportunity_applications:[],offboarding_steps:[],task_submissions:[],invites:[],audit_events:[],approval_queue:[],scenarios:[],workflow_findings:[]};
+const FALLBACK={profiles:[],attendance:[],leave_requests:[],tasks:[],projects:[],notes:[],announcements:[],payroll_records:[],payroll_items:[],salary_corrections:[],contracts:[],career_skills:[],career_training:[],career_goals:[],career_shares:[],notifications:[],policy_rules:[],employee_cases:[],privacy_requests:[],opportunities:[],opportunity_applications:[],offboarding_steps:[],task_submissions:[],company_holidays:[],invites:[],audit_events:[],approval_queue:[],scenarios:[],workflow_findings:[]};
 ctx.records={...FALLBACK};
 let toastTimer=0;
 ctx.toast=function(message,error=false){const container=document.querySelector('.toast-wrap')||(()=>{const n=document.createElement('div');n.className='toast-wrap';document.body.appendChild(n);return n})();const t=document.createElement('div');t.className='toast '+(error?'error':'success');t.innerHTML=`${icon(error?'alert':'success',17)}<span>${esc(message)}</span>`;container.prepend(t);setTimeout(()=>t.remove(),5500);while(container.children.length>3)container.lastElementChild.remove();};
@@ -600,14 +800,15 @@ ctx.refresh=async function(notify=false){const token=++ctx.loadToken;const names
  ctx.loadErrors=errors;if(notify){ctx.toast(Object.keys(errors).length?'Refresh finished with data errors':'Workspace up to date',!!Object.keys(errors).length)}ctx.render();};
 ctx.render=function(){if(!ctx.profile)return;const links=linksFor(ctx), grouped={};for(const [id,config] of links){(grouped[config.group]??=[]).push([id,config])}
  const unread=ctx.records.notifications?.filter(x=>!x.read_at).length||0;
- const menu=`<aside class="navside" aria-label="Workspace navigation"><div class="nav-top"><span class="brand-symbol">P</span><div class="nav-brand">ParroDash<small>TPARRO WORKSPACE</small></div><button class="nav-collapse" data-act="collapse" title="Close menu" aria-label="Close menu">${icon('menu',17)}</button></div><div class="nav-groups">${Object.entries(grouped).map(([group,sections])=>`<div class="group-label">${esc(group)}</div><nav class="nav">${sections.map(([id,c])=>`<button class="side-link ${ctx.view===id?'active':''}" data-nav="${id}" aria-current="${ctx.view===id?'page':'false'}">${icon(c.icon,16)} <span>${esc(c.title)}</span>${id==='inbox'&&exec(ctx.profile)&&ctx.records.leave_requests?.some(x=>x.status==='pending')?`<b class="count">${ctx.records.leave_requests.filter(x=>x.status==='pending').length}</b>`:id==='notices'&&unread?`<b class="count">${unread}</b>`:''}</button>`).join('')}</nav>`).join('')}</div><div class="nav-footer"><div class="profile-nav">${avatar(ctx.profile.full_name)}<div><strong>${esc(ctx.profile.full_name)}</strong><small>${exec(ctx.profile)?'Founder / CEO':ctx.profile.role==='hr'?'HR administrator':ctx.profile.role==='admin'?'System administrator':ctx.profile.role==='manager'?'Manager':'Employee'}</small></div><button type="button" data-act="signout" aria-label="Sign out" title="Sign out">${icon('logout',17)}</button></div></div></aside>`;
- root.innerHTML=`<div class="layout ${ctx.menuOpen?'menu-open':''}">${menu}<div class="workarea"><header class="apphead"><button class="iconbtn" data-act="collapse" title="Menu" aria-label="Menu">${icon('menu',19)}</button><div class="crumb"><span>TPARRO</span>${icon('chevron',13)}<strong>${esc(viewTitle(ctx.view))}</strong></div><button class="searchcmd" data-act="command" aria-label="Search and navigate">${icon('search',17)} <span class="search-label">Search anything...</span><kbd class="kbd">⌘ K</kbd></button><button class="header-bell" data-act="goto" data-id="notices" title="My notifications" aria-label="Open notifications">${icon('bell',19)}${unread?'<span class="dot"></span>':''}</button><span class="build-id" title="ParroDash release">Build 2.3</span>${avatar(ctx.profile.full_name,'sm')}</header><main class="main" id="main">${renderPage(ctx)}</main></div></div>`;
+ const menu=`<aside class="navside" aria-label="Workspace navigation"><div class="nav-top"><span class="brand-symbol">P</span><div class="nav-brand">ParroDash<small>TPARRO WORKSPACE</small></div><button class="nav-collapse" data-act="collapse" title="Close menu" aria-label="Close menu">${icon('menu',17)}</button></div><div class="nav-groups">${Object.entries(grouped).map(([group,sections])=>`<div class="group-label">${esc(group)}</div><nav class="nav">${sections.map(([id,c])=>`<button class="side-link ${ctx.view===id?'active':''}" data-nav="${id}" aria-current="${ctx.view===id?'page':'false'}">${icon(c.icon,16)} <span>${esc(c.title)}</span>${id==='inbox'&&exec(ctx.profile)&&ctx.records.leave_requests?.some(x=>x.status==='pending')?`<b class="count">${ctx.records.leave_requests.filter(x=>x.status==='pending').length}</b>`:id==='notices'&&unread?`<b class="count">${unread}</b>`:''}</button>`).join('')}</nav>`).join('')}</div><div class="nav-footer"><div class="profile-nav">${avatar(ctx.profile.full_name)}<div><strong>${esc(ctx.profile.full_name)}</strong><small>${exec(ctx.profile)?'Founder / CEO':ctx.profile.role==='cofounder'?'Co-founder':ctx.profile.role==='hr'?'HR administrator':ctx.profile.role==='admin'?'System administrator':ctx.profile.role==='manager'?'Manager':'Employee'}</small></div><button type="button" data-act="signout" aria-label="Sign out" title="Sign out">${icon('logout',17)}</button></div></div></aside>`;
+ root.innerHTML=`<div class="layout ${ctx.menuOpen?'menu-open':''}">${menu}<div class="workarea"><header class="apphead"><button class="iconbtn" data-act="collapse" title="Menu" aria-label="Menu">${icon('menu',19)}</button><div class="crumb"><span>TPARRO</span>${icon('chevron',13)}<strong>${esc(viewTitle(ctx.view))}</strong></div><button class="searchcmd" data-act="command" aria-label="Search and navigate">${icon('search',17)} <span class="search-label">Search anything...</span><kbd class="kbd">⌘ K</kbd></button><button class="header-bell" data-act="goto" data-id="notices" title="My notifications" aria-label="Open notifications">${icon('bell',19)}${unread?'<span class="dot"></span>':''}</button>${avatar(ctx.profile.full_name,'sm')}</header><main class="main" id="main">${renderPage(ctx)}</main></div></div>`;
  if(ctx.commandOpen)openCommand();};
 ctx.showAuth=showAuth;
 
 function showAuth(message='',savedEmail=''){
  ctx.profile=null;ctx.user=null;ctx.records={...FALLBACK};ctx.menuOpen=false;
- root.innerHTML=`<div class="auth-wrap"><section class="auth-hero"><div class="flex"><span class="brand-symbol">P</span><div><div class="nav-brand" style="font-size:18px">ParroDash</div><div class="overline" style="margin-top:5px">TPARRO WORKSPACE</div></div></div><div><span class="badge">PEOPLE · WORK · INTELLIGENCE</span><h1>Your people.<br>One beautiful<br>workspace.</h1><p>One place for your team, projects, attendance and growth. Register an account or sign in to your existing workspace.</p><div class="hero-pips"><i></i><i></i><i></i></div></div><p class="foot">PRIVATE HR DATA · FOUNDER-APPROVED STAFF ACCESS</p></section><section class="auth-form-wrap"><div class="auth-card"><span class="brand-symbol" style="margin-bottom:23px">P</span><div class="auth-tabs" role="tablist" aria-label="Account access"><button type="button" class="auth-tab selected" aria-selected="true" role="tab">Log in</button><button type="button" class="auth-tab" id="signup-toggle" role="tab" aria-selected="false">Sign up</button></div><div class="overline" style="margin-bottom:12px">WELCOME BACK</div><h2>Sign in to ParroDash</h2><p class="desc">Use your email and password, or create a new employee account without an invitation.</p>${message?`<p class="notice danger" role="alert" style="margin-bottom:18px">${esc(message)}</p>`:''}<form class="form" id="signin-form"><div class="field"><label for="login-email">Email address</label><input id="login-email" name="email" type="email" class="input" autocomplete="email" placeholder="you@example.com" value="${esc(savedEmail)}" required></div><div class="field"><label for="login-password">Password</label><input id="login-password" name="password" type="password" class="input" autocomplete="current-password" minlength="6" required placeholder="••••••••"></div><div class="between" style="margin-top:-7px"><button id="show-password" type="button" class="btn sm">Show password</button><button id="forgot-password" type="button" class="btn sm">Forgot password?</button></div><button type="submit" class="btn primary full">Sign in ${icon('arrow')}</button></form><div class="auth-footer">New employee? <button class="auth-link" type="button" id="signup-bottom">Create an account</button><br>New registrations need Founder/CEO identity review before HR access.<p style="margin-top:8px;font-size:10px;opacity:.72">ParroDash build 2.3 · Team projects</p></div></div></section></div>`;
+ root.innerHTML=`<div class="auth-wrap"><section class="auth-hero"><div class="flex"><span class="brand-symbol">P</span><div><div class="nav-brand" style="font-size:18px">ParroDash</div><div class="overline" style="margin-top:5px">TPARRO WORKSPACE</div></div></div><div><span class="badge">PEOPLE · WORK · INTELLIGENCE</span><h1>Your people.<br>One beautiful<br>workspace.</h1><p>One place for your team, projects, attendance and growth. Register an account or sign in to your existing workspace.</p><div class="hero-pips"><i></i><i></i><i></i></div></div><p class="foot">PRIVATE HR DATA · FOUNDER-APPROVED STAFF ACCESS</p></section><section class="auth-form-wrap"><div class="auth-card"><span class="brand-symbol" style="margin-bottom:23px">P</span><div class="auth-tabs" role="tablist" aria-label="Account access"><button type="button" class="auth-tab selected" aria-selected="true" role="tab">Log in</button><button type="button" class="auth-tab" id="signup-toggle" role="tab" aria-selected="false">Sign up</button></div><div class="overline" style="margin-bottom:12px">WELCOME BACK</div><h2>Sign in to ParroDash</h2><p class="desc">Use your email and password, or create a new employee account without an invitation.</p>${message?`<p class="notice danger" role="alert" style="margin-bottom:18px">${esc(message)}</p>`:''}<form class="form" id="signin-form"><div class="field"><label for="login-email">Email address</label><input id="login-email" name="email" type="email" class="input" autocomplete="email" placeholder="you@example.com" value="${esc(savedEmail)}" required></div><div class="field"><label for="login-password">Password</label><input id="login-password" name="password" type="password" class="input" autocomplete="current-password" minlength="6" required placeholder="••••••••"></div><div class="between" style="margin-top:-7px"><button id="show-password" type="button" class="btn sm">Show password</button><button id="forgot-password" type="button" class="btn sm">Forgot password?</button></div><button type="submit" class="btn primary full">Sign in ${icon('arrow')}</button></form><div class="auth-footer">New employee? <button class="auth-link" type="button" id="signup-bottom">Create an account</button><br>New registrations need Founder/CEO identity review before HR access.</div></div></section></div>`;
+ paintAuthHero(root.querySelector('.auth-hero'));
  root.querySelector('#signin-form').onsubmit=async e=>{e.preventDefault();const form=e.target,submit=form.querySelector('[type=submit]');submit.disabled=true;const email=String(new FormData(form).get('email')||'').trim();try{const f=new FormData(form);const {error}=await db.auth.signInWithPassword({email,password:String(f.get('password'))});if(error)throw Error(error.message);await boot()}catch(err){showAuth('Sign-in failed: '+err.message,email)}finally{submit.disabled=false}};
  root.querySelector('#forgot-password').onclick=()=>showRecovery();
  root.querySelector('#signup-toggle').onclick=()=>showSignup();
@@ -620,6 +821,7 @@ function showSignup(message='',savedName='',savedEmail=''){
  if(ownerMode)savedEmail='findmojahid@gmail.com';
  ctx.profile=null;ctx.menuOpen=false;
  root.innerHTML=`<div class="auth-wrap"><section class="auth-hero"><div class="flex"><span class="brand-symbol">P</span><div><div class="nav-brand" style="font-size:18px">ParroDash</div><div class="overline" style="margin-top:5px">TPARRO WORKSPACE</div></div></div><div><span class="badge">${ownerMode?'PRIVATE FOUNDER SETUP':'GET STARTED'}</span><h1>${ownerMode?'Your fresh<br>workspace starts here.':'Join the<br>workspace.'}</h1><p>${ownerMode?'Create your brand-new TPARRO Founder account using this private one-time setup link.':'Sign up with your own email and password. A TPARRO Founder/CEO reviews new employee registrations before access is granted.'}</p><div class="hero-pips"><i></i><i></i><i></i></div></div><p class="foot">${ownerMode?'NEW WORKSPACE · FOUNDER ACCESS':'NO INVITATION REQUIRED · EMPLOYEE ACCOUNTS ONLY'}</p></section><section class="auth-form-wrap"><div class="auth-card"><span class="brand-symbol" style="margin-bottom:23px">P</span><div class="auth-tabs" role="tablist" aria-label="Account access"><button type="button" class="auth-tab" id="login-toggle" role="tab" aria-selected="false">Log in</button><button type="button" class="auth-tab selected" role="tab" aria-selected="true">Sign up</button></div><div class="overline" style="margin-bottom:12px">${ownerMode?'INITIAL ACCOUNT SETUP':'NEW ACCOUNT'}</div><h2>${ownerMode?'Create your Founder account':'Create your account'}</h2><p class="desc">${ownerMode?'This one-time link is for your TPARRO founder account only. Set a new password to open the empty workspace. Do not forward the link.':'No invite needed. Your account starts with Employee permissions and waits for approval.'}</p>${message?`<p class="notice danger" role="alert" style="margin-bottom:16px">${esc(message)}</p>`:''}<form class="form" id="signup-form"><div class="field"><label for="signup-name">Full name</label><input id="signup-name" class="input" name="name" autocomplete="name" minlength="2" maxlength="90" required value="${esc(savedName)}" placeholder="Your name"></div><div class="field"><label for="signup-email">Email address</label><input id="signup-email" class="input" name="email" type="email" autocomplete="email" required ${ownerMode?'readonly':''} value="${esc(savedEmail)}" placeholder="you@example.com"></div><div class="field"><label for="signup-password">Create password</label><input id="signup-password" class="input" name="password" type="password" autocomplete="new-password" minlength="10" maxlength="72" required placeholder="10+ characters, letters and a number"></div><div class="field"><label for="signup-confirm">Confirm password</label><input id="signup-confirm" class="input" name="confirm" type="password" autocomplete="new-password" minlength="10" maxlength="72" required placeholder="Repeat your password"></div><label class="auth-check"><input type="checkbox" name="agree" required> ${ownerMode?'I am activating the private TPARRO Founder setup link and will not share it.':'I understand access is granted after TPARRO verifies my identity and a Founder/CEO approves.'}</label><button class="btn primary full" type="submit">${ownerMode?'Create Founder workspace':'Create employee account'} ${icon('arrow')}</button></form><div class="auth-footer">Already registered? <button class="auth-link" id="login-bottom" type="button">Log in</button><br>${ownerMode?'Your private setup code is consumed once. Future employees can sign up separately for approval.':'Your email is not independently verified by this sign-up flow; management verifies identity before activation.'}</div></div></section></div>`;
+ paintAuthHero(root.querySelector('.auth-hero'));
  root.querySelector('#login-toggle').onclick=()=>showAuth('',savedEmail);
  root.querySelector('#login-bottom').onclick=()=>showAuth('',savedEmail);
  root.querySelector('#signup-form').onsubmit=async e=>{
